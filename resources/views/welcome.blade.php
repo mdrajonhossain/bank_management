@@ -41,7 +41,7 @@
     <!-- Hero Section -->
     <section class="hero-section text-center py-5 h-screen">
         <div class="container">
-            <h1>Welcome to Our Bank</h1>
+            <h1>Welcome to Our Banks</h1>
             <p class="lead">We are here to serve you with the best financial solutions</p>
             <a href="#" class="btn btn-primary">Get Started</a>
         </div>
