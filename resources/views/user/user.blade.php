@@ -95,7 +95,7 @@
 
     <!-- Content -->
     <div class="content">
-        <h1>Body Content</h1>
+        <h1>User Dashboard</h1>
         <p>This is the main content area.</p>
     </div>
 
