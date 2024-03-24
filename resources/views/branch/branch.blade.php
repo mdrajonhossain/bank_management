@@ -4,33 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Panal</title>
+    <title>User</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <style>
-    /* Add custom styles here */
-    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('public/user/styles.css') }}" rel="stylesheet" />
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Branch</h1>
+    <!-- Header -->
+    @include('user/header')
 
-        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
+    <!-- Sidebar (hidden on mobile) -->
+    <!-- <div class="sidebar d-none d-md-block">
+        <h3>{{ Auth::user()->name; }}</h3>
+        <a href="#">Dashboard</a>
+        <a href="{{url('/user/fdr')}}">FDR</a>
+        <a href="#">Link 3</a>
+        <a href="#">Link 4</a>
+    </div> -->
+    @include('branch/leftbar')
 
+    <!-- Content -->
+    <div class="content">
+        <h1>Dashboard</h1>
+        <h3>Islamic Bank Branch</h3>
+        <p>This is the main content area.</p>
     </div>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

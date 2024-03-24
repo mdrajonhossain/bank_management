@@ -46,6 +46,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth', 'is_User'])->prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'userpanal']);
+    Route::get('/fdr', [UserController::class, 'userfdr']);
+    
+    Route::post('/fdrformsend', [UserController::class, 'fdrformsend']);
+    Route::get('/fdrformsend', [UserController::class, 'get_fdrformsend']);
 });
 
 
