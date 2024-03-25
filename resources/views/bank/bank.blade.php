@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label for="textArea">Commend:</label>
                                             <textarea class="form-control" name="commend" required id="textArea"
-                                                rows="3">{{ $info->branch_comment }}</textarea>
+                                                rows="3">{{ $info->bank_comment }}</textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
