@@ -36,7 +36,7 @@
                         <th>Bank Name</th>
                         <th>Bank Name</th>
                         <th>Bank Approve</th>
-                        <th>Bank Command</th>
+                        <th>BD Bank Command</th>
                         <th>Received</th>
                         <th>View</th>
                     </tr>
@@ -52,10 +52,10 @@
                         <td>2011/04/25</td>
                         <td>$320,800</td>
                         <td>{{ $info->brank_verifyed == 0 ? "False" : "True" }}</td>
-                        <td>{{ $info->bank_comment }}</td>
+                        <td>{{ $info->bdbank_comment }}</td>
                         <td>
                             @if($info->brank_verifyed)
-                            <button type="button" class="btn btn-{{ $info->brank_verifyed == 1 ? 'info' : 'danger' }}"
+                            <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">Received</button>
                             @else
                             <a class="btn btn-danger btn-block">Approve</a>
