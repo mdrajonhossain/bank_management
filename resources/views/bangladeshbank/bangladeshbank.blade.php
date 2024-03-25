@@ -58,7 +58,7 @@
                             <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">Received</button>
                             @else
-                            <a class="btn btn-danger btn-block">Approve</a>
+                            <a class="btn btn-danger btn-block">No Received</a>
                             @endif
                         </td>
                         <td>
