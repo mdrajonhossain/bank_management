@@ -52,19 +52,16 @@ class LoginController extends Controller
 
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
 
+           
             if (auth()->user()->usertype == 0) {
-                return redirect('/user');
-            }
-
-            if (auth()->user()->usertype == 1) {
                 return redirect('/branch');
             }
 
-            if (auth()->user()->usertype == 2) {
+            if (auth()->user()->usertype == 1) {
                 return redirect('/bank');
             }
 
-            if (auth()->user()->usertype == 3) {
+            if (auth()->user()->usertype == 2) {
                 return redirect('/bangladeshBank');
             }
 

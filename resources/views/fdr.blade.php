@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User</title>
+    <title>Management</title>
     <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('public/user/styles.css') }}" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Add your custom styles here */
+    </style>
 </head>
-
 <body>
+    <!-- Navbar -->
+    @include('header')
 
-    <!-- Header -->
-    @include('user/header')
-
-    @include('user/leftbar')
-
-
-    <!-- Content -->
-    <div class="content">
+    <!-- Hero Section -->
+    <section class="hero-section py-5 h-screen">
+        <div class="container">
+        <div class="content">
         <p style="font-size: 18px; color: black; margin-top: 20px;">New FDR Application</p>
         <p style="font-size: 13px; color: #FF0000; line-height: 18px;">* marked fields are mandatory</p>
         <div class="container" style="font-size: 12px !important; background: #F5F6F9; margin-bottom: 40px;">
-            <form action="{{url('/user/fdrformsend')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('/fdrformsend')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <h4
                     style="margin-top: 20px; padding-left: 0px; font-size: 20px; background-color: #006DD5; padding: 12px; color: #fff;font-size: 18px; line-height: 24px; margin-bottom: 0px;">
@@ -198,13 +196,18 @@
                         style="width: 100px; border-radius: 20px;">Cancel</button>
                 </div>
             </form>
+        </div>          
         </div>
+    </section>
 
-        <!-- Bootstrap JS and dependencies -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Footer -->
+    <!-- <footer class="footer bg-dark text-light text-center py-3">
+        <div class="container">
+            <span>&copy; 2024 Bank Name. All rights reserved.</span>
+        </div>
+    </footer> -->
 
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

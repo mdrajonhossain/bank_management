@@ -21,7 +21,7 @@ class isBranch
     // }
 
     public function handle(Request $request, Closure $next){
-        if(Auth::check() && auth()->user()->usertype == 1){
+        if(Auth::check() && auth()->user()->usertype == 0){
             return $next($request);
         }
         return redirect()->back()->with('error', 'Yoy do not access of admin');

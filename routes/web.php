@@ -36,6 +36,9 @@ Route::get('/clear', function() {
  });
 
 
+ Route::get('/fdr', [UserController::class, 'userfdr']);
+ Route::post('/fdrformsend', [UserController::class, 'fdrformsend']);
+
 
 Auth::routes();
 
@@ -44,23 +47,27 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::middleware(['auth', 'is_User'])->prefix('user')->group(function () {
-    Route::get('/', [UserController::class, 'userpanal']);
-    Route::get('/fdr', [UserController::class, 'userfdr']);
+// Route::middleware(['auth', 'is_User'])->prefix('user')->group(function () {
+//     Route::get('/', [UserController::class, 'userpanal']);
+//     Route::get('/fdr', [UserController::class, 'userfdr']);
     
-    Route::post('/fdrformsend', [UserController::class, 'fdrformsend']);
-    Route::get('/fdrformsend', [UserController::class, 'get_fdrformsend']);
-});
+//     Route::post('/fdrformsend', [UserController::class, 'fdrformsend']);
+//     Route::get('/fdrformsend', [UserController::class, 'get_fdrformsend']);
+// });
 
 
 
 Route::middleware(['auth', 'is_Branch'])->prefix('branch')->group(function () {
     Route::get('/', [BranchController::class, 'branchpanal']);
+    
+    Route::post('/approve', [BranchController::class, 'approvebranch']);
+
 });
 
 
 Route::middleware(['auth', 'is_Bank'])->prefix('bank')->group(function () {
     Route::get('/', [BankController::class, 'bankpanal']);
+    Route::post('/approve', [BankController::class, 'approvebank']);
 });
 
 

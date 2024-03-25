@@ -15,7 +15,7 @@ class UserController extends Controller{
 
 
     public function userfdr(){        
-        return view('user.fdr');  
+        return view('fdr');  
     }
 
 
@@ -36,21 +36,16 @@ class UserController extends Controller{
         $post->nomonee_etin = $request->nominee_etin;
         $post->post_code =  $request->code;
         $post->district = $request->district;
-        $post->state = $request->state;
-        $post->user_id = Auth::user()->id;
-        $post->banch_id = "1";
-        $post->branch_verifyed = "0";
-        $post->bank_id = "0";
-        $post->brank_verifyed = "0";
-        $post->bdbank_verifyed = "0";
-        $post->comment =  $request->comment;
-        
+        $post->state = $request->state;        
+        $post->banch_id = "1";        
+        $post->bank_id = "0";        ;
+                
         try{
             $post->save();    
-            return redirect('/user/fdr')->with('quice_add_success', 'quice save successfully');
+            return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
         }
         catch (\PDOException $e) {
-            return redirect('/user/fdr')->with('quice_add_success', 'quice save successfully');
+            return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
         }
     }
 

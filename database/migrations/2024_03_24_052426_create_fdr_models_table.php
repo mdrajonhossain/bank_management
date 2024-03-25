@@ -27,14 +27,18 @@ class CreateFdrModelsTable extends Migration
             $table->string('nomonee_etin');
             $table->string('post_code');
             $table->string('district');
-            $table->string('state');
-            $table->string('user_id');
-            $table->string('banch_id');
-            $table->string('branch_verifyed');
-            $table->string('bank_id');
-            $table->string('brank_verifyed');
-            $table->string('bdbank_verifyed');
-            $table->string('comment');                        
+            $table->string('state');   
+
+            $table->string('banch_id')->default("")->nullable();            
+            $table->boolean('branch_verifyed')->default(false)->nullable();
+            $table->string('branch_comment')->default("no_comment");
+            
+            $table->string('bank_id')->default("")->nullable();            
+            $table->boolean('brank_verifyed')->default(false)->nullable();
+            $table->string('bank_comment')->default("no_comment");
+                        
+            $table->boolean('bdbank_verifyed')->default(false)->nullable();
+            $table->string('bdbank_comment')->default("no_comment");
             $table->timestamps();
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
         });

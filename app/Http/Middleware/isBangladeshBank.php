@@ -21,7 +21,7 @@ class isBangladeshBank
     // }
 
     public function handle(Request $request, Closure $next){
-        if(Auth::check() && auth()->user()->usertype == 3){
+        if(Auth::check() && auth()->user()->usertype == 2){
             return $next($request);
         }
         return redirect()->back()->with('error', 'Yoy do not access of admin');
