@@ -34,8 +34,8 @@
                         <th>Sceeme Name</th>
                         <th>Address</th>
                         <th>Bank Name</th>
-                        <th>Branch Name</th>
-                        <th>Branch Approve</th>
+                        <th>Bank Name</th>
+                        <th>Bank Approve</th>
                         <th>Bank Command</th>
                         <th>Received</th>
                         <th>View</th>
@@ -51,10 +51,10 @@
                         <td>61</td>
                         <td>2011/04/25</td>
                         <td>$320,800</td>
-                        <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td>
+                        <td>{{ $info->brank_verifyed == 0 ? "False" : "True" }}</td>
                         <td>{{ $info->bank_comment }}</td>
                         <td>
-                            @if($info->branch_verifyed)
+                            @if($info->brank_verifyed)
                             <button type="button" class="btn btn-{{ $info->brank_verifyed == 1 ? 'info' : 'danger' }}"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">Received</button>
                             @else
@@ -76,7 +76,7 @@
                                     </h3>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{url('/bank/approve')}}" method="post"
+                                    <form action="{{url('/bangladeshBank/approve')}}" method="post"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" value="{{ $info->id }}" name="id" hidden>
@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label for="textArea">Commend:</label>
                                             <textarea class="form-control" name="commend" required id="textArea"
-                                                rows="3">{{ $info->branch_comment }}</textarea>
+                                                rows="3">{{ $info->bdbank_comment }}</textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
