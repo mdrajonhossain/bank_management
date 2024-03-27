@@ -21,11 +21,16 @@ class BankController extends Controller{
     public function approvebank(Request $request){
         try{
             $affectedRows = Fdr_model::where('id', $request->id)->update(['bank_id' => auth()->user()->id, 'brank_verifyed' => $request->Approve, 'bank_comment' => $request->commend]);
-            return redirect('/branch')->with('add_success', 'save successfully');   
+            return redirect('/bank')->with('add_success', 'save successfully');   
         }
         catch (\PDOException $e) {
-            return redirect('/branch')->with('add_success', 'save successfully');   
+            return redirect('/bank')->with('add_success', 'save successfully');   
         }        
+    }
+
+    public function viewdata($id){        
+        $data = Fdr_model::find($id);
+        return view('bank.view', ['data' => $data]);
     }
 
 

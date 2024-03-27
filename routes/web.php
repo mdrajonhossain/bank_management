@@ -69,6 +69,7 @@ Route::middleware(['auth', 'is_Branch'])->prefix('branch')->group(function () {
 Route::middleware(['auth', 'is_Bank'])->prefix('bank')->group(function () {
     Route::get('/', [BankController::class, 'bankpanal']);
     Route::post('/approve', [BankController::class, 'approvebank']);
+    Route::get('/views/{id}', [BankController::class, 'viewdata']);
 });
 
 

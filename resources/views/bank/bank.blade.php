@@ -61,8 +61,8 @@
                             <a class="btn btn-danger btn-block">Approve</a>
                             @endif
                         </td>
-                        <td>
-                        <a class="btn btn-info btn-block">View</a>
+                        <td>                        
+                        <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
                         </td>
                     </tr>
 
