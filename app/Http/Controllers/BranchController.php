@@ -23,6 +23,11 @@ class BranchController extends Controller{
         }        
     }
 
+    public function viewdata($id){        
+        $data = Fdr_model::find($id);
+        return view('branch.view', ['data' => $data]);
+    }
+
 
     
 }

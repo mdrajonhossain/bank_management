@@ -38,6 +38,7 @@
                         <th>Branch Approve</th>
                         <th>Branch Command</th>
                         <th>Received</th>
+                        <th>View</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,6 +61,10 @@
                             <button type="button" class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }}"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">Received</button>
                             @endif
+                        </td>
+                        <td>                            
+                            <a href="{{ url('/branch/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
+
                         </td>
                     </tr>
 

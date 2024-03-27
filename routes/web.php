@@ -61,6 +61,7 @@ Route::middleware(['auth', 'is_Branch'])->prefix('branch')->group(function () {
     Route::get('/', [BranchController::class, 'branchpanal']);
     
     Route::post('/approve', [BranchController::class, 'approvebranch']);
+    Route::get('/views/{id}', [BranchController::class, 'viewdata']);
 
 });
 
