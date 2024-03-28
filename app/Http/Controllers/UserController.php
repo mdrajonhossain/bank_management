@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Fdr_model;
+use App\Models\Bankdatamodel;
+use App\Models\Branchdatamodel;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -33,6 +35,22 @@ class UserController extends Controller{
             'password' => bcrypt($request->password),
         ]);
 
+        $bankdata = Bankdatamodel::create([
+            'user_id' => $user->id,
+            'bank_name' => $request->bank_name,
+            'bank_address' => $request->bank_address,
+            'is_bank' => $request->is_bank,
+            'is_branch' => $request->is_branch
+        ]);
+
+        $banbranchkdata = Branchdatamodel::create([
+            'user_id' => $user->id,
+            'bank_id' => $request->id,
+            'branch_address' => $request->branch_address,            
+            'is_bank' => $request->is_bank,
+            'is_branch' => $request->is_branch
+        ]);
+          
         return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
     }
 
