@@ -34,7 +34,7 @@
                 </tr>
 
                 <tr class="bg-{{$data->bdbank_verifyed == 1 ? 'info' : 'danger' }} text-white">
-                    <td>Bank Status</td>
+                    <td>Bangladesh Bank Status</td>
                     <td>{{$data->bdbank_verifyed == 1 ? "True" : "False" }} / {{$data->bdbank_comment}}</td>
                 </tr>
                 @endforeach
