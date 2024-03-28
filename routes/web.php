@@ -30,7 +30,9 @@ Route::get('/', function () {
 });
 
 
-Route::post('/user_register', [UserController::class, 'userregister']);
+// Route::post('/user_register', [UserController::class, 'userregister']);
+Route::get('/fdrstatus', [UserController::class, 'fdrstatus']);
+Route::POST('/searchfdrstatus', [UserController::class, 'searchfdrstatus']);
 
 
 

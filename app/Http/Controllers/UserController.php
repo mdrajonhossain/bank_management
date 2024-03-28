@@ -35,26 +35,42 @@ class UserController extends Controller{
             'password' => bcrypt($request->password),
         ]);
 
-        $bankdata = Bankdatamodel::create([
-            'user_id' => $user->id,
-            'bank_name' => $request->bank_name,
-            'bank_address' => $request->bank_address,
-            'is_bank' => $request->is_bank,
-            'is_branch' => $request->is_branch
-        ]);
+        // $bankdata = Bankdatamodel::create([
+        //     'user_id' => $user->id,
+        //     'bank_name' => $request->bank_name,
+        //     'bank_address' => $request->bank_address,
+        //     'is_bank' => $request->is_bank,
+        //     'is_branch' => $request->is_branch
+        // ]);
 
-        $banbranchkdata = Branchdatamodel::create([
-            'user_id' => $user->id,
-            'bank_id' => $request->id,
-            'branch_address' => $request->branch_address,            
-            'is_bank' => $request->is_bank,
-            'is_branch' => $request->is_branch
-        ]);
+        // $banbranchkdata = Branchdatamodel::create([
+        //     'user_id' => $user->id,
+        //     'bank_id' => $request->id,
+        //     'branch_address' => $request->branch_address,            
+        //     'is_bank' => $request->is_bank,
+        //     'is_branch' => $request->is_branch
+        // ]);
           
         return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
     }
 
 
+    
+
+    public function searchfdrstatus(Request $request){     
+        $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->get();
+        
+        
+        return view('userview', ['data' => $data]);   
+
+    }
+  
+  
+  
+  
+    public function fdrstatus(){        
+        return view('fdrstatus');  
+    }
 
 
 
@@ -72,9 +88,12 @@ class UserController extends Controller{
     public function fdrformsend(Request $request){
         // dd($request->all());
 
+        $randomNumber = rand(10547, 971264700);
+
         $post = new Fdr_model;
         
         $post->name = $request->name;
+        $post->search_id = $randomNumber;
         $post->phone = $request->mobile_number;
         $post->email = $request->email;
         $post->etin = $request->etin;

@@ -16,6 +16,7 @@ class CreateFdrModelsTable extends Migration
         Schema::create('fdr_models', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('search_id');
             $table->string('phone');
             $table->string('email');
             $table->string('etin');
