@@ -9,6 +9,9 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\Bangladesh_bankController;
 
 
+use App\Http\Controllers\Controllers;
+
+
 
 
 /*
@@ -27,13 +30,22 @@ Route::get('/', function () {
 });
 
 
+Route::post('/user_register', [UserController::class, 'userregister']);
+
+
+
 Route::get('/clear', function() {
-    Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    Artisan::call('config:cache');
+    
+    Artisan::call('cache:clear');    
+    Artisan::call('config:clear');    
+    Artisan::call('config:cache');    
     Artisan::call('view:clear'); 
-    return "Cleared!"; 
- });
+    Artisan::call('route:clear');
+    Artisan::call('event:clear');
+    Artisan::call('optimize:clear');
+    Artisan::call('auth:clear-resets');
+    return "Cleared all caches!";
+});
 
 
  Route::get('/fdr', [UserController::class, 'userfdr']);
