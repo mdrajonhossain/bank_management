@@ -111,7 +111,8 @@ class UserController extends Controller{
                 
         try{
             $post->save();    
-            return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
+            // return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
+            return view('fdridgeneratorview', ["search_id" => $post->search_id, "Name" => $post->name]);
         }
         catch (\PDOException $e) {
             return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
