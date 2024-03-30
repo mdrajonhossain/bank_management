@@ -13,7 +13,7 @@
                         <a class="nav-link" href="{{url('/fdr')}}">FDR</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link" href="{{url('/fdrstatus')}}">FDR Status</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>

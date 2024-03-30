@@ -16,6 +16,7 @@ class CreateFdrModelsTable extends Migration
         Schema::create('fdr_models', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('search_id');
             $table->string('phone');
             $table->string('email');
             $table->string('etin');
@@ -39,8 +40,7 @@ class CreateFdrModelsTable extends Migration
                         
             $table->boolean('bdbank_verifyed')->default(false)->nullable();
             $table->string('bdbank_comment')->default("no_comment");
-            $table->timestamps();
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
+            $table->timestamps();            
         });
     }
 

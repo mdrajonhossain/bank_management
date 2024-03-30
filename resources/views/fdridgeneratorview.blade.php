@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
-        /* Add your custom styles here */
+    /* Add your custom styles here */
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,10 +44,13 @@
 
     <!-- Hero Section -->
     <section class="hero-section text-center py-5 h-screen">
-        <div class="container">
-            <h1>Welcome to Our Banks</h1>
-            <p class="lead">We are here to serve you with the best financial solutions</p>
-            <a href="{{url('login') }}" class="btn btn-primary">Get Started</a>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="bg-info text-white"><h4>Name : {{ $Name }}</h4></div>                     
+                     <div class="bg-info text-white"><h4>Search ID : {{ $search_id }}</h4></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -59,4 +64,5 @@
     <!-- Bootstrap JS (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
