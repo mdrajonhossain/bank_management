@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('usertype')->default('0');
             $table->string('verifyed')->default(0);
+            $table->string('bank_id');
+            $table->string('branch_id')->default("0");
             $table->rememberToken();
             $table->timestamps();
         });

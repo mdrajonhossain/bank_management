@@ -77,4 +77,6 @@ Route::middleware(['auth', 'is_Bank'])->prefix('bank')->group(function () {
 Route::middleware(['auth', 'is_BangladeshBank'])->prefix('bangladeshBank')->group(function () {
     Route::get('/', [Bangladesh_bankController::class, 'Bangladesh_bankpanal']);
     Route::post('/approve', [Bangladesh_bankController::class, 'approvebdbank']);
+
+    Route::get('/views/{id}', [Bangladesh_bankController::class, 'viewdata']);
 });
