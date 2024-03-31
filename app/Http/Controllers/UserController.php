@@ -103,6 +103,7 @@ class UserController extends Controller{
         $post->nomonee_relation = $request->relation;
         $post->nomonee_nid = $request->nominee_nid;
         $post->nomonee_etin = $request->nominee_etin;
+        $post->service_name = $request->service_name;
         $post->post_code =  $request->code;
         $post->district = $request->district;
         $post->state = $request->state;        

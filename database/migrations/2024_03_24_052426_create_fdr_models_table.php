@@ -26,10 +26,10 @@ class CreateFdrModelsTable extends Migration
             $table->string('nomonee_relation');
             $table->string('nomonee_nid');
             $table->string('nomonee_etin');
+            $table->string('service_name');            
             $table->string('post_code');
             $table->string('district');
             $table->string('state');   
-
             $table->string('banch_id')->default("")->nullable();            
             $table->boolean('branch_verifyed')->default(false)->nullable();
             $table->string('branch_comment')->default("no_comment");
