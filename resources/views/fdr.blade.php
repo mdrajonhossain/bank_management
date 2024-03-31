@@ -17,6 +17,15 @@
     <!-- Navbar -->
     @include('header')
 
+    <?php
+        use App\Models\User;
+        $user = new User();
+                
+        $users = $user::where('usertype', 0)->get();
+        $bank = $user::where('usertype', 1)->get();
+        echo($users);
+    ?>
+
     <!-- Hero Section -->
     <section class="hero-section py-5 h-screen">
         <div class="container">
@@ -126,10 +135,10 @@
 
                             </div>
 
-                           
+
                             <div class="col-md-4">
                                 <label for="bankSelect" class="form-label"
-                                    style="font-weight: bold; font-size: 14px;">Service type</label>                                
+                                    style="font-weight: bold; font-size: 14px;">Service type</label>
                                 <select class="form-select" id="bankSelect" name="service_name" required>
                                     <option value="">Select Service</option>
                                     <option value="Account opening">Account opening</option>
@@ -196,19 +205,23 @@
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
                                 <select class="form-select" id="bankSelect" name="bank_name" required>
                                     <option value="">Select Bank</option>
-                                    <option value="bangladesh islami bank">bangladesh islami bank</option>
-                                    <option value="IFIC bank">IFIC bank</option>
-                                    <option value="Dutch bangla bank">Dutch bangla ban</option>
+                                    @foreach($bank as $bank)
+                                    <option value="bangladesh islami bank">{{$bank->name }}</option>
+                                    @endforeach
                                     <!-- Add more options as needed -->
                                 </select>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="exampleInputEmail1" class="form-label"
-                                    style="font-weight: bold; font-size: 14px;">Agent's Name</label>
+                                <label for="bankSelect" class="form-label"
+                                    style="font-weight: bold; font-size: 14px;">Branch's Name</label>
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
-                                <input type="text" class="form-control" name="agent_name" pattern="[a-zA-Z\s]+"
-                                    required>
+                                <select class="form-select" id="bankSelect" name="agent_name" required>
+                                    <option value="">Select Branch's</option>
+                                    @foreach($users as $user)
+                                    <option value="bangladesh islami bank">{{$user->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="col-md-4 mb-2">
