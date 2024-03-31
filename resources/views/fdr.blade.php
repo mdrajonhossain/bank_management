@@ -21,9 +21,8 @@
         use App\Models\User;
         $user = new User();
                 
-        $users = $user::where('usertype', 0)->get();
-        $bank = $user::where('usertype', 1)->get();
-        echo($users);
+        $branch = $user::where('usertype', 0)->get();
+        $bank = $user::where('usertype', 1)->get();        
     ?>
 
     <!-- Hero Section -->
@@ -203,12 +202,13 @@
                                 <label for="bankSelect" class="form-label"
                                     style="font-weight: bold; font-size: 14px;">Bank Name</label>
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
-                                <select class="form-select" id="bankSelect" name="bank_name" required>
+                                <select class="form-select" id="bankSelect" name="bank_id" required>
                                     <option value="">Select Bank</option>
-                                    @foreach($bank as $bank)
-                                    <option value="bangladesh islami bank">{{$bank->name }}</option>
-                                    @endforeach
-                                    <!-- Add more options as needed -->
+                                    @if($bank)
+                                        @foreach($bank as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endforeach
+                                    @endif                                    
                                 </select>
                             </div>
 
@@ -216,11 +216,13 @@
                                 <label for="bankSelect" class="form-label"
                                     style="font-weight: bold; font-size: 14px;">Branch's Name</label>
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
-                                <select class="form-select" id="bankSelect" name="agent_name" required>
+                                <select class="form-select" id="bankSelect" name="branch_id" required>
                                     <option value="">Select Branch's</option>
-                                    @foreach($users as $user)
-                                    <option value="bangladesh islami bank">{{$user->name }}</option>
-                                    @endforeach
+                                    @if($branch)
+                                        @foreach($branch as $brances)
+                                            <option value="{{$brances->id}}">{{$brances->name}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
 
