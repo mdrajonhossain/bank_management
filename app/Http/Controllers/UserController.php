@@ -130,8 +130,8 @@ class UserController extends Controller{
         $post->post_code =  $request->code;
         $post->district = $request->district;
         $post->state = $request->state;
-        $post->aplybank_id = $request->bankid;        
-        $post->aplybranch_id = $request->branchid;
+        $post->aply_bank_id = $request->bankid;        
+        $post->aply_branch_id = $request->branchid;
              
         try{
             $post->save();    

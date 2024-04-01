@@ -30,8 +30,8 @@ class CreateFdrModelsTable extends Migration
             $table->string('post_code');
             $table->string('district');
             $table->string('state');  
-            $table->string('aplybank_id');
-            $table->string('aplybranch_id');
+            $table->string('aply_branch_id');
+            $table->string('aply_bank_id');
 
             $table->string('banch_id')->default("")->nullable();            
             $table->boolean('branch_verifyed')->default(false)->nullable();
@@ -43,10 +43,9 @@ class CreateFdrModelsTable extends Migration
                         
             $table->boolean('bdbank_verifyed')->default(false)->nullable();
             $table->string('bdbank_comment')->default("no_comment");
-            $table->timestamps();     
+            $table->timestamps();  
             
-            $table->foreign('aplybank_id')->references('id')->on('bankdatamodels')->onDelete('cascade');
-            $table->foreign('aplybranch_id')->references('id')->on('branchdatamodels')->onDelete('cascade');
+            
             
         });
     }
