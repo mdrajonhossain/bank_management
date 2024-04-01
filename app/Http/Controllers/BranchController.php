@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Fdr_model;
+use App\Models\Bankdatamodel;
+use App\Models\Branchdatamodel;
 
 class BranchController extends Controller{
     //
     public function branchpanal(){        
-        $data = Fdr_model::all();
+        // $data = Fdr_model::all();
+        $data = Fdr_model::with(['bankdatamodel', 'branchdatamodel'])->get();
         return view('branch.branch', ['data' => $data]);
     }
 

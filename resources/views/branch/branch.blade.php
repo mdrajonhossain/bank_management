@@ -28,12 +28,8 @@
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Sceeme Name</th>
-                        <th>Address</th>
-                        <th>Bank Name</th>
+                        <th>Name</th>                        
+                        <th>Bank</th>                        
                         <th>Branch Name</th>
                         <th>Branch Approve</th>
                         <th>Branch Command</th>
@@ -44,12 +40,9 @@
                 <tbody>
                     @foreach($data as $info)
                     <tr>
-                        <td>{{$info->name }}</td>
-                        <td>{{$info->email }}</td>
-                        <td>Edinburgh</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>bangladesh Islami Bank</td>
+                        <td>{{$info->name }}</td>                        
+                        <td>{{$info->bankdatamodel->bank_name }}</td>                        
+                        <td>{{$info->branchdatamodel->branch_name }}</td>
                         <td>$320,800</td>
                         <td>{{ $info->branch_verifyed }}</td>
                         <td>{{ $info->branch_comment }}</td>

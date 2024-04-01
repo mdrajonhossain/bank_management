@@ -159,7 +159,9 @@ class UserController extends Controller{
 
 
     public function testapi(){        
-        $users = Fdr_model::with('bankdatamodel')->get();
+        $users = Fdr_model::with(['bankdatamodel', 'branchdatamodel'])->get();
+        
+
 
         return response()->json(['satus' => $users], 201);
     }

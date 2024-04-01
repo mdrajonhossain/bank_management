@@ -13,5 +13,10 @@ class Branchdatamodel extends Model
     protected $fillable = [
         'bank_id', 'branch_name',
     ];
+
+
+    public function fdrmodel(){
+        return $this->hasOne(Fdr_model::class, 'aply_branch_id');        
+    }
  
 }

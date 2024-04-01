@@ -10,8 +10,11 @@ class Fdr_model extends Model{
 
     public function bankdatamodel(){
         return $this->belongsTo(Bankdatamodel::class, 'aply_bank_id');
-        
-
-
     }
+
+    public function branchdatamodel(){
+        return $this->belongsTo(Branchdatamodel::class, 'aply_branch_id');        
+    }
+
+
 }
