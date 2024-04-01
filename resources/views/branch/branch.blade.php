@@ -32,7 +32,7 @@
                         <th>Phone</th>
                         <th>Bank</th>
                         <th>Branch Name</th>
-                        <th>Application type</th>
+                        <th>Application type</th>                        
                         <th>Received</th>
                         <th>View</th>
                     </tr>
