@@ -30,9 +30,8 @@
                     <tr>
                         <th>Name</th>                        
                         <th>Bank</th>                        
-                        <th>Branch Name</th>
-                        <th>Branch Approve</th>
-                        <th>Branch Command</th>
+                        <th>Branch Name</th>                        
+                        <th>Type</th>                        
                         <th>Received</th>
                         <th>View</th>
                     </tr>
@@ -42,10 +41,8 @@
                     <tr>
                         <td>{{$info->name }}</td>                        
                         <td>{{$info->bankdatamodel->bank_name }}</td>                        
-                        <td>{{$info->branchdatamodel->branch_name }}</td>
-                        <td>$320,800</td>
-                        <td>{{ $info->branch_verifyed }}</td>
-                        <td>{{ $info->branch_comment }}</td>
+                        <td>{{$info->branchdatamodel->branch_name }}</td>                                                
+                        <td>{{$info->service_name }}</td>                        
                         <td>
                             @if($info->branch_verified)
                             <a
