@@ -17,41 +17,63 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller{
 
 
-    public function userregister(Request $request){
-
+    public function userRegister(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'usertype' => 'required|string',
         ]);
-
+    
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 422);
+            return redirect('/register')->withErrors($validator)->withInput();
         }
-
+    
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'usertype' => $request->usertype,
         ]);
+    
+        if ($user) {
+            Auth::login($user);
+            if ($user->usertype === '0') {
+                Branchdatamodel::create([
+                    'bank_id' => $request->bankid,
+                    'branch_name' => $request->branch_name,
+                ]);
+                return redirect('/branch');
+            } elseif ($user->usertype === '1') {
+                Bankdatamodel::create([
+                    'user_id' => $user->id,
+                    'bank_name' => $request->bank_name,
+                ]);
+                return redirect('/bank');
+            }
+        } else {
+            // Handle user creation failure
+            // Log error or return error message
+        }
+    }
 
-        // $bankdata = Bankdatamodel::create([
-        //     'user_id' => $user->id,
-        //     'bank_name' => $request->bank_name,
-        //     'bank_address' => $request->bank_address,
-        //     'is_bank' => $request->is_bank,
-        //     'is_branch' => $request->is_branch
-        // ]);
 
-        // $banbranchkdata = Branchdatamodel::create([
-        //     'user_id' => $user->id,
-        //     'bank_id' => $request->id,
-        //     'branch_address' => $request->branch_address,            
-        //     'is_bank' => $request->is_bank,
-        //     'is_branch' => $request->is_branch
-        // ]);
-          
-        return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
+    public function login(Request $request) {
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            $user = Auth::user();
+            if ($user->usertype === '0') {
+                return redirect('/branch');
+            } elseif ($user->usertype === '1') {
+                return redirect('/bank');
+            } else {
+                return redirect('/');
+            }
+        } else {
+            return redirect('/login')->with('error', 'Invalid credentials');
+        }
     }
 
 
@@ -86,7 +108,7 @@ class UserController extends Controller{
 
 
     public function fdrformsend(Request $request){
-        // dd($request->all());
+        
 
         $randomNumber = rand(10547, 971264700);
 
@@ -105,10 +127,10 @@ class UserController extends Controller{
         $post->nomonee_etin = $request->nominee_etin;
         $post->post_code =  $request->code;
         $post->district = $request->district;
-        $post->state = $request->state;        
-        $post->banch_id = "1";        
-        $post->bank_id = "0";        ;
-                
+        $post->state = $request->state;      
+        $post->aplybank_id = $request->bank_id;        
+        $post->aplybranch_id = $request->branch_id;
+             
         try{
             $post->save();    
             // return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
@@ -122,6 +144,15 @@ class UserController extends Controller{
 
     public function get_fdrformsend(){        
         return view('user.fdr_manage');  
+    }
+
+
+
+
+
+    public function getbranch($id){  
+        $branchlist = Branchdatamodel::where('bank_id', $id)->get();     
+        return response()->json(['satus' => true, 'branch'=> $branchlist], 201); 
     }
 
 

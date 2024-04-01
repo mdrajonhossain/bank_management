@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <?php
+        $bank = \App\Models\Bankdatamodel::all();
+    ?>
     <!-- Navbar -->
     @include('header')
 
@@ -127,10 +130,6 @@
                             </div>
                         </div>
 
-
-
-
-
                         <h4
                             style="margin-top: 30px; padding-left: 40px; font-size: 20px; background-color: #006DD5; padding: 12px; color: #fff;font-size: 18px; line-height: 24px; margin-bottom: 0px;">
                             Address Details</h4>
@@ -180,22 +179,27 @@
                                 <label for="bankSelect" class="form-label"
                                     style="font-weight: bold; font-size: 14px;">Bank Name</label>
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
-                                <select class="form-select" id="bankSelect" name="bank_name" required>
-                                    <option value="">Select Bank</option>
-                                    <option value="bangladesh islami bank">bangladesh islami bank</option>
-                                    <option value="IFIC bank">IFIC bank</option>
-                                    <option value="Dutch bangla bank">Dutch bangla ban</option>
-                                    <!-- Add more options as needed -->
+                                <select onchange="bankchangeadd(this.value)" class="form-select" id="bankSelect"
+                                    name="bank_id" required>
+                                    <option value="" selected disabled>Select bank</option>
+                                    @if($bank)
+                                    @foreach($bank as $banks)
+                                    <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
+                                    @endforeach
+                                    @endif
                                 </select>
                             </div>
 
+
+
                             <div class="col-md-4">
-                                <label for="exampleInputEmail1" class="form-label"
+                                <label for="bankSelect" class="form-label"
                                     style="font-weight: bold; font-size: 14px;">Agent's Name</label>
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
-                                <input type="text" class="form-control" name="agent_name" pattern="[a-zA-Z\s]+"
-                                    required>
+                                <select class="form-select" id="branchselcet" name="branch_id" required disabled>
+                                </select>
                             </div>
+
 
                             <div class="col-md-4 mb-2">
                                 <label for="exampleFormControlTextarea1" class="form-label"
@@ -228,6 +232,45 @@
 
     <!-- Bootstrap JS (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+    <script>
+    function bankchangeadd(value) {
+        // Replace {id} with the actual value passed to the function
+        const apiUrl = `http://localhost/bank_management/api/getbranch/${value}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                var selectElement = document.getElementById("branchselcet");
+                selectElement.innerHTML = ""; // Clear existing options
+
+                if (data.branch.length !== 0) {
+                    selectElement.disabled = false;
+                    data.branch.forEach(function(agentName) {
+                        var option = document.createElement("option");
+                        option.text = agentName.branch_name;
+                        option.value = agentName.id;
+                        selectElement.add(option);
+                    });
+                } else {
+                    var option = document.createElement("option");
+                    option.text = "Select branch";
+                    option.value = "";
+                    selectElement.add(option);
+                    selectElement.disabled = true;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching branch data:', error);
+            });
+    }
+    </script>
+
+
+
 </body>
 
 </html>

@@ -15,12 +15,11 @@ class CreateBankdatamodelsTable extends Migration
     {
         Schema::create('bankdatamodels', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id'); // Use unsignedBigInteger for foreign keys
             $table->string('bank_name');
-            $table->string('bank_address');
-            $table->string('is_bank');
-            $table->string('is_branch');            
             $table->timestamps();
+        
+            // Define foreign key constraint
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

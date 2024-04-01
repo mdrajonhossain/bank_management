@@ -11,10 +11,7 @@ class Bankdatamodel extends Model
 
 
     protected $fillable = [
-        'bankname',
-        'bankaddress',
-        'isbank',
-        'isbranch'
+        'user_id', 'bank_name',
     ];
 
 }

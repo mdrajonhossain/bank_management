@@ -28,7 +28,9 @@ class CreateFdrModelsTable extends Migration
             $table->string('nomonee_etin');
             $table->string('post_code');
             $table->string('district');
-            $table->string('state');   
+            $table->string('state');  
+            $table->string('aplybank_id');
+            $table->string('aplybranch_id'); 
 
             $table->string('banch_id')->default("")->nullable();            
             $table->boolean('branch_verifyed')->default(false)->nullable();

@@ -14,17 +14,12 @@ class CreateBranchdatamodelsTable extends Migration
     public function up()
     {
         Schema::create('branchdatamodels', function (Blueprint $table) {
-            $table->id();            
-            $table->string('branch_address');
-            $table->string('is_bank');
-            $table->string('is_branch');
+            $table->id();
+            $table->unsignedBigInteger('bank_id');
+            $table->string('branch_name');
             $table->timestamps();        
-            
-            $table->bigInteger('bank_id')->unsigned();
+             
             $table->foreign('bank_id')->references('id')->on('bankdatamodels')->onDelete('cascade');
-
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

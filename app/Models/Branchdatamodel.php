@@ -9,11 +9,9 @@ class Branchdatamodel extends Model
 {
     use HasFactory;
 
-
+ 
     protected $fillable = [
-        'branch_address',
-        'is_bank',
-        'is_branch'
+        'bank_id', 'branch_name',
     ];
  
 }
