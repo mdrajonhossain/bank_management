@@ -131,18 +131,6 @@
                             </div>
 
 
-                            <div class="col-md-4">
-                                <label for="bankSelect" class="form-label"
-                                    style="font-weight: bold; font-size: 14px;">Service type</label>
-                                <select class="form-select" id="bankSelect" name="service_name" required>
-                                    <option value="">Select Service</option>
-                                    <option value="Account opening">Account opening</option>
-                                    <option value="Fixed Deposit Receipt">Fixed Deposit Receipt</option>
-                                    <option value="Credit cards">Credit cards</option>
-                                    <option value="Debit cards">Debit cards</option>
-                                    <option value="Advancements of loans">Advancements of loans</option>
-                                </select>
-                            </div>
                         </div>
 
                         <h4
@@ -195,7 +183,7 @@
                                     style="font-weight: bold; font-size: 14px;">Bank Name</label>
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
                                 <select onchange="bankchangeadd(this.value)" class="form-select" id="bankSelect"
-                                    name="bank_id" required>
+                                    name="bankid" required>
                                     <option value="" selected disabled>Select bank</option>
                                     @if($bank)
                                     @foreach($bank as $banks)
@@ -211,7 +199,7 @@
                                 <label for="bankSelect" class="form-label"
                                     style="font-weight: bold; font-size: 14px;">Agent's Name</label>
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
-                                <select class="form-select" id="branchselcet" name="branch_id" required disabled>
+                                <select class="form-select" id="branchselcet" name="branchid" required disabled>
                                 </select>
                             </div>
 
