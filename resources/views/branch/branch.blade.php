@@ -28,10 +28,11 @@
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>                        
-                        <th>Bank</th>                        
-                        <th>Branch Name</th>                        
-                        <th>Type</th>                        
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Bank</th>
+                        <th>Branch Name</th>
+                        <th>Application type</th>
                         <th>Received</th>
                         <th>View</th>
                     </tr>
@@ -39,20 +40,23 @@
                 <tbody>
                     @foreach($data as $info)
                     <tr>
-                        <td>{{$info->name }}</td>                        
-                        <td>{{$info->bankdatamodel->bank_name }}</td>                        
-                        <td>{{$info->branchdatamodel->branch_name }}</td>                                                
-                        <td>{{$info->service_name }}</td>                        
+                        <td>{{$info->name }}</td>
+                        <td>{{$info->phone }}</td>
+                        <td>{{$info->bankdatamodel->bank_name }}</td>
+                        <td>{{$info->branchdatamodel->branch_name }}</td>
+                        <td>{{$info->service_name }}</td>
                         <td>
                             @if($info->branch_verified)
                             <a
                                 class="btn btn-{{ $info->branch_verified == 1 ? 'info' : 'danger' }} btn-block">Approve</a>
                             @else
                             <button type="button" class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">Received</button>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">
+                                {{ $info->branch_verifyed == 1 ? 'Appruve' : 'Receive' }}
+                            </button>
                             @endif
                         </td>
-                        <td>                            
+                        <td>
                             <a href="{{ url('/branch/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
 
                         </td>
