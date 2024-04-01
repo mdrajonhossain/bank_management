@@ -108,7 +108,8 @@ class UserController extends Controller{
 
 
     public function fdrformsend(Request $request){
-        
+
+         
 
         $randomNumber = rand(10547, 971264700);
 
