@@ -22,3 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/getbranch/{id}', [UserController::class, 'getbranch']);
 
+
+
+
+
+
+Route::get('/testapi', [UserController::class, 'testapi']);
+

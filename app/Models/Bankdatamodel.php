@@ -14,4 +14,10 @@ class Bankdatamodel extends Model
         'user_id', 'bank_name',
     ];
 
+
+    public function fdrmodel(){
+        return $this->hasOne(Fdr_model::class, 'aply_bank_id');        
+    }
+
 }
+
