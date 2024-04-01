@@ -19,6 +19,7 @@
     ?>
     <!-- Navbar -->
     @include('header')
+ 
 
     <!-- Hero Section -->
     <section class="hero-section py-5 h-screen">
@@ -127,6 +128,20 @@
                                 <span style="color: red; font-size: 13px; line-height: 18px;">*</span>
                                 <input class="form-control form-control" id="formFileLg" name="upload" type="file">
 
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label for="bankSelect" class="form-label"
+                                    style="font-weight: bold; font-size: 14px;">Service type</label>
+                                <select class="form-select" id="bankSelect" name="service_name" required>
+                                    <option value="">Select Service</option>
+                                    <option value="Account opening">Account opening</option>
+                                    <option value="Fixed Deposit Receipt">Fixed Deposit Receipt</option>
+                                    <option value="Credit cards">Credit cards</option>
+                                    <option value="Debit cards">Debit cards</option>
+                                    <option value="Advancements of loans">Advancements of loans</option>
+                                </select>
                             </div>
                         </div>
 
