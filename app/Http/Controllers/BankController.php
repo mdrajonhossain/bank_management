@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Fdr_model;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\User;
 
 
 
@@ -51,6 +51,17 @@ class BankController extends Controller{
     public function viewdata($id){        
         $data = Fdr_model::find($id);
         return view('bank.view', ['data' => $data]);
+    }
+
+// branch account enable /disable   
+    public function statusdata($id, $status){
+        try{
+            $affectedRows = User::where('id', $id)->update(['is_active' => $status]);
+            return redirect('/bank')->with('add_success', 'save successfully');   
+        }
+        catch (\PDOException $e) {
+            return redirect('/bank')->with('add_success', 'save successfully');   
+        }        
     }
 
 

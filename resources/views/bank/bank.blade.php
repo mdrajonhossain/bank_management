@@ -36,7 +36,7 @@
                         <th>Application type</th>
                         <th>Received</th>
                         <th>View</th>
-                        <th>Status</th>
+                        <th>Branch Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +62,7 @@
                             <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
                         </td>
                         <td>
-                            <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-danger btn-block">Status</a>
+                            <a href="{{ url('/bank/status/' . $info->user_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-danger btn-block">{{ $info->auth_status == 1 ? "Active" : "Inactive" }}</a>
                         </td>
                     </tr>
 
