@@ -33,7 +33,6 @@
                         <th>Bank</th>
                         <th>Branch Name</th>
                         <th>Application type</th>
-                        <th>Branch Status</th>
                         <th>Received</th>
                         <th>View</th>
                     </tr>
@@ -43,16 +42,10 @@
                     <tr>
                         <td>{{$info->name }}</td>
                         <td>{{$info->phone }}</td>
-                        <td>{{$info->bankdatamodel->bank_name }}</td>
-                        <td>{{$info->branchdatamodel->branch_name }}</td>
+                        <td>{{$info->bank_name }}</td>
+                        <td>{{$info->branch_name }}</td>
                         <td>{{$info->service_name }}</td>
-                        <td>
-                            @if($info->is_active == 1)
-                                    Active
-                            @else
-                                    Inactive
-                            @endif
-                        </td>
+
                         <!-- <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td> -->
                         <td>
                             @if($info->branch_verifyed)

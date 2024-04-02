@@ -170,7 +170,7 @@ class UserController extends Controller{
     public function testapieee(){        
         // $data = Fdr_model::with(['bankdatamodel', 'branchdatamodel','user'])->get();
         // $auth_user_id = Auth::id();
-        $auth_user_id = Auth::id();;
+        $auth_user_id = 2;
 
         $data = DB::select("
             SELECT fdr_models.*, bankdatamodels.*, branchdatamodels.*, users.name, users.email as authemail, users.name as auth_name, users.is_active as auth_status 

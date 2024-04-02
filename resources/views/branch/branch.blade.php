@@ -42,11 +42,11 @@
                     <tr>
                         <td>{{$info->name }}</td>
                         <td>{{$info->phone }}</td>
-                        <td>{{$info->bankdatamodel->bank_name }}</td>
-                        <td>{{$info->branchdatamodel->branch_name }}</td>
+                        <td>{{$info->bank_name }}</td>
+                        <td>{{$info->branch_name }}</td>
                         <td>{{$info->service_name }}</td>
                         <td>
-                            @if($info->branch_verified)
+                            @if($info->branch_verifyed)
                             <a
                                 class="btn btn-{{ $info->branch_verified == 1 ? 'info' : 'danger' }} btn-block">Approve</a>
                             @else
