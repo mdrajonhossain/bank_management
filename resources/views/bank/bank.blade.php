@@ -29,14 +29,11 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Sceeme Name</th>
-                        <th>Address</th>
-                        <th>Bank Name</th>
+                        <th>Phone</th>
+                        <th>Bank</th>
                         <th>Branch Name</th>
-                        <th>Branch Approve</th>
-                        <th>Bank Command</th>
+                        <th>Application type</th>
+                        <th>Branch Status</th>
                         <th>Received</th>
                         <th>View</th>
                     </tr>
@@ -45,14 +42,18 @@
                     @foreach($data as $info)
                     <tr>
                         <td>{{$info->name }}</td>
-                        <td>{{$info->email }}</td>
-                        <td>Edinburgh</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>bangladesh Islami Bank</td>
-                        <td>$320,800</td>
-                        <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td>
-                        <td>{{ $info->bank_comment }}</td>
+                        <td>{{$info->phone }}</td>
+                        <td>{{$info->bankdatamodel->bank_name }}</td>
+                        <td>{{$info->branchdatamodel->branch_name }}</td>
+                        <td>{{$info->service_name }}</td>
+                        <td>
+                            @if($info->is_active == 1)
+                                    Active
+                            @else
+                                    Inactive
+                            @endif
+                        </td>
+                        <!-- <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td> -->
                         <td>
                             @if($info->branch_verifyed)
                             <button type="button" class="btn btn-{{ $info->brank_verifyed == 1 ? 'info' : 'danger' }}"
@@ -61,8 +62,8 @@
                             <a class="btn btn-danger btn-block">Approve</a>
                             @endif
                         </td>
-                        <td>                        
-                        <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
+                        <td>
+                            <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
                         </td>
                     </tr>
 
@@ -76,8 +77,7 @@
                                     </h3>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{url('/bank/approve')}}" method="post"
-                                        enctype="multipart/form-data">
+                                    <form action="{{url('/bank/approve')}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" value="{{ $info->id }}" name="id" hidden>
                                         <div class="form-group">
