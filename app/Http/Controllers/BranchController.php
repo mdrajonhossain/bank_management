@@ -13,11 +13,22 @@ class BranchController extends Controller{
     public function branchpanal(){        
         // $data = Fdr_model::all();
         
-            $user_id = Auth::id();
-            $data = Fdr_model::with(['bankdatamodel', 'branchdatamodel'])
-                ->whereHas('branchdatamodel', function ($query) use ($user_id) {
-                    $query->where('user_id', $user_id);
-                })->get();
+            // $user_id = Auth::id();
+            // $data = Fdr_model::with(['bankdatamodel', 'branchdatamodel'])
+            //     ->whereHas('branchdatamodel', function ($query) use ($user_id) {
+            //         $query->where('user_id', $user_id);
+            //     })->get();
+
+            $auth_user_id = Auth::id();;
+
+            $data = DB::select("
+                SELECT fdr_models.*, bankdatamodels.*, branchdatamodels.*, users.name, users.email as authemail, users.name as auth_name, users.is_active as auth_status 
+                FROM fdr_models
+                LEFT JOIN bankdatamodels ON fdr_models.aply_bank_id = bankdatamodels.id
+                LEFT JOIN branchdatamodels ON fdr_models.aply_branch_id = branchdatamodels.id
+                LEFT JOIN users ON branchdatamodels.user_id = users.id 
+                WHERE branchdatamodels.user_id = $auth_user_id
+            ");
     
         return view('branch.branch', ['data' => $data]);      
     }

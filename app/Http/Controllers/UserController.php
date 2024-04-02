@@ -170,16 +170,16 @@ class UserController extends Controller{
     public function testapieee(){        
         // $data = Fdr_model::with(['bankdatamodel', 'branchdatamodel','user'])->get();
         // $auth_user_id = Auth::id();
-        $auth_user_id = 4;
+        $auth_user_id = Auth::id();;
 
-$data = DB::select("
-    SELECT fdr_models.*, bankdatamodels.*, branchdatamodels.*, users.name, users.email as authemail, users.name as auth_name, users.is_active as auth_status 
-    FROM fdr_models
-    LEFT JOIN bankdatamodels ON fdr_models.aply_bank_id = bankdatamodels.id
-    LEFT JOIN branchdatamodels ON fdr_models.aply_branch_id = branchdatamodels.id
-    LEFT JOIN users ON branchdatamodels.user_id = users.id 
-    WHERE branchdatamodels.user_id = $auth_user_id
-");
+        $data = DB::select("
+            SELECT fdr_models.*, bankdatamodels.*, branchdatamodels.*, users.name, users.email as authemail, users.name as auth_name, users.is_active as auth_status 
+            FROM fdr_models
+            LEFT JOIN bankdatamodels ON fdr_models.aply_bank_id = bankdatamodels.id
+            LEFT JOIN branchdatamodels ON fdr_models.aply_branch_id = branchdatamodels.id
+            LEFT JOIN users ON branchdatamodels.user_id = users.id 
+            WHERE branchdatamodels.user_id = $auth_user_id
+        ");
 
         return response()->json(['satus' => $data], 201);
     }
