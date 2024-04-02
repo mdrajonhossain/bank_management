@@ -102,3 +102,7 @@ Route::middleware(['auth', 'is_BangladeshBank'])->prefix('bangladeshBank')->grou
 
     Route::get('/views/{id}', [Bangladesh_bankController::class, 'viewdata']);
 });
+
+
+
+
