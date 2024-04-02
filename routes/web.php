@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 
 Route::post('/user_register', [UserController::class, 'userregister']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/logine', [UserController::class, 'login']);
 
 
 

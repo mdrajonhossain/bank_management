@@ -16,7 +16,7 @@
 
                     <div class="card-body">
                         <!-- <form method="POST" action="{{ route('login') }}"> -->
-                        <form method="POST" action="{{ url('/login') }}">
+                        <form method="POST" action="{{ url('/logine') }}">
                             @csrf
 
                             <div class="mb-3">

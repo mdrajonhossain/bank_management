@@ -63,10 +63,20 @@ class UserController extends Controller{
 
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');
-    
+
+        // Attempt to authenticate user
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             $user = Auth::user();
+            
+            // Check if the user is disabled
+            if ($user->is_active == '0') {
+                // Log out the user and redirect to login page with error message
+                Auth::logout();
+                return redirect('/login')->with('error', 'Your account is disabled. Please contact support.');
+            }
+            
+            // Redirect user based on their usertype
             if ($user->usertype === '0') {
                 return redirect('/branch');
             } elseif ($user->usertype === '1') {
@@ -75,10 +85,10 @@ class UserController extends Controller{
                 return redirect('/');
             }
         } else {
+            // Redirect to login page with error message for invalid credentials
             return redirect('/login')->with('error', 'Invalid credentials');
         }
     }
-
 
     
 
