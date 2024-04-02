@@ -29,5 +29,5 @@ Route::get('/getbranch/{id}', [UserController::class, 'getbranch']);
 
 
 // test part
-Route::get('/testapi/{id}', [UserController::class, 'testapi']);
+Route::get('/testapi', [UserController::class, 'testapieee']);
 

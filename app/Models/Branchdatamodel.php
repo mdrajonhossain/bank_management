@@ -18,5 +18,16 @@ class Branchdatamodel extends Model
     public function fdrmodel(){
         return $this->hasOne(Fdr_model::class, 'aply_branch_id');        
     }
+
+
+   
+
+    
+
+
+    
+
+
+
  
 }

@@ -20,7 +20,7 @@ class CreateBranchdatamodelsTable extends Migration
             $table->string('user_id');
             $table->timestamps();        
              
-            $table->foreign('bank_id')->references('id')->on('bankdatamodels')->onDelete('cascade');
+            $table->foreign('bank_id')->references('id')->on('bankdatamodels')->onDelete('cascade');            
         });
     }
 
