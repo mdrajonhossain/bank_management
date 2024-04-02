@@ -11,7 +11,7 @@ class Branchdatamodel extends Model
 
  
     protected $fillable = [
-        'bank_id', 'branch_name',
+        'bank_id', 'branch_name','user_id',
     ];
 
 

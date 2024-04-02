@@ -42,6 +42,7 @@ class UserController extends Controller{
                 Branchdatamodel::create([
                     'bank_id' => $request->bankid,
                     'branch_name' => $request->branch_name,
+                    'user_id' => $user->id,
                 ]);
                 return redirect('/branch');
             } elseif ($user->usertype === '1') {
@@ -158,14 +159,16 @@ class UserController extends Controller{
     }
 
 
-    public function testapi(){        
-        $users = Fdr_model::with(['bankdatamodel', 'branchdatamodel'])->get();
+    // public function testapi(){        
+    //     $users = Fdr_model::with(['bankdatamodel', 'branchdatamodel'])->get();        
+    //     return response()->json(['satus' => $users], 201);
+    // }
+
+
+    public function testapi($id){  
         
-
-
-        return response()->json(['satus' => $users], 201);
+        return response()->json(['satus' => $id], 201);
     }
-
 
 
 

@@ -12,7 +12,15 @@ use App\Models\Fdr_model;
 class BankController extends Controller{
     //
     public function bankpanal(){        
-        $data = Fdr_model::all();
+        // $data = Fdr_model::all();
+
+        $user_id = Auth::id();
+        $data = Fdr_model::with(['bankdatamodel', 'branchdatamodel'])
+            ->whereHas('bankdatamodel', function ($query) use ($user_id) {
+                $query->where('user_id', $user_id);
+            })->get();
+
+
         return view('bank.bank', ['data' => $data]);
     }
 

@@ -17,6 +17,7 @@ class CreateBranchdatamodelsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('bank_id');
             $table->string('branch_name');
+            $table->string('user_id');
             $table->timestamps();        
              
             $table->foreign('bank_id')->references('id')->on('bankdatamodels')->onDelete('cascade');
