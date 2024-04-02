@@ -33,78 +33,27 @@
                         <th>Phone Number</th>
                         <th>Sceeme Name</th>
                         <th>Address</th>
-                        <th>Bank Name</th>
-                        <th>Bank Name</th>
+                        <th>Bank Name</th>                        
                         <th>Bank Approve</th>
                         <th>BD Bank Command</th>
                         <th>Received</th>
                         <th>View</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach($data as $info)
-                    <tr>
-                        <td>{{$info->name }}</td>
-                        <td>{{$info->email }}</td>
-                        <td>Edinburgh</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
+                <tbody>                    
+                    <tr>                        
+                        <td>Edinburgh</td>                                                
                         <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>{{ $info->brank_verifyed == 0 ? "False" : "True" }}</td>
-                        <td>{{ $info->bdbank_comment }}</td>
-                        <td>
-                            @if($info->brank_verifyed)
-                            <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">Received</button>
-                            @else
-                            <a class="btn btn-danger btn-block">No Received</a>
-                            @endif
-                        </td>
-                        <td>
-                        <a href="{{ url('/bangladeshBank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
-                        </td>
+                        <td>2011/04/25</td>
+                        <td>2011/04/25</td>
+                        <td>2011/04/25</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>                                              
+                        <td>$320,800</td>                                              
+                        <td>$320,800</td>                                              
+                        <td>$320,800</td>                                              
                     </tr>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal_{{ $info->id }}" tabindex="-1"
-                        aria-labelledby="exampleModalLabel_{{ $info->id }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title fs-5" id="exampleModalLabel_{{ $info->id }}">{{$info->name }}
-                                    </h3>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{url('/bangladeshBank/approve')}}" method="post"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="text" value="{{ $info->id }}" name="id" hidden>
-                                        <div class="form-group">
-                                            <label for="selectOption">Decition Approve/Reject:</label>
-                                            <select class="form-control" id="selectOption" name="Approve" required>
-                                                <option value="" disabled selected>Select an option</option>
-                                                <option value="1">Approve</option>
-                                                <option value="0">Reject</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="textArea">Commend:</label>
-                                            <textarea class="form-control" name="commend" required id="textArea"
-                                                rows="3">{{ $info->bdbank_comment }}</textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                                        
                     <!-- Add more rows as needed -->
                 </tbody>
             </table>

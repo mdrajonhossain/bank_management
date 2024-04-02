@@ -104,5 +104,4 @@ Route::middleware(['auth', 'is_BangladeshBank'])->prefix('bangladeshBank')->grou
 });
 
 
-
-
+Route::get('/bdbank', [Bangladesh_bankController::class, 'bdbank']);

@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Fdr_model;
 
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 
 class Bangladesh_bankController extends Controller
 {
@@ -29,6 +33,25 @@ class Bangladesh_bankController extends Controller
     public function viewdata($id){        
         $data = Fdr_model::find($id);
         return view('bangladeshbank.view', ['data' => $data]);
+    }
+
+
+    public function bdbank()
+    {
+        $pass = "rajon123456";
+        $user = User::create([
+            'name' => "bdbank",
+            'email' => "bdbank@gmail.com",
+            'password' => bcrypt($pass),
+            'usertype' => 2,
+        ]);
+    
+        // Check if the user type is 2
+        if ($user->usertype === 2) {
+            return redirect('/bangladeshBank');
+        } else {
+            return redirect('/');
+        }
     }
 
 

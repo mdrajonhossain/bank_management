@@ -80,7 +80,9 @@ class UserController extends Controller{
             if ($user->usertype === '0') {
                 return redirect('/branch');
             } elseif ($user->usertype === '1') {
-                return redirect('/bank');
+                return redirect('/bank');            
+            } elseif ($user->usertype === '2') {
+                return redirect('/bangladeshBank');
             } else {
                 return redirect('/');
             }
