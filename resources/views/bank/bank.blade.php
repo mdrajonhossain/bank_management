@@ -33,8 +33,10 @@
                         <th>Bank</th>
                         <th>Branch Name</th>
                         <th>Application type</th>
+                        <th>Application type</th>
                         <th>Received</th>
                         <th>View</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,6 +47,7 @@
                         <td>{{$info->bank_name }}</td>
                         <td>{{$info->branch_name }}</td>
                         <td>{{$info->service_name }}</td>
+                        <td>{{$info->user_id }}</td>
 
                         <!-- <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td> -->
                         <td>
@@ -57,6 +60,9 @@
                         </td>
                         <td>
                             <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
+                        </td>
+                        <td>
+                            <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-danger btn-block">Status</a>
                         </td>
                     </tr>
 
