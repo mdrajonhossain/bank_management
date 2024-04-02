@@ -32,8 +32,7 @@
                         <th>Phone</th>
                         <th>Bank</th>
                         <th>Branch Name</th>
-                        <th>Application type</th>
-                        <th>Application type</th>
+                        <th>Application type</th>                        
                         <th>Received</th>
                         <th>View</th>
                         <th>Branch Status</th>
@@ -47,8 +46,6 @@
                         <td>{{$info->bank_name }}</td>
                         <td>{{$info->branch_name }}</td>
                         <td>{{$info->service_name }}</td>
-                        <td>{{$info->user_id }}</td>
-
                         <!-- <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td> -->
                         <td>
                             @if($info->branch_verifyed)
@@ -62,7 +59,7 @@
                             <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
                         </td>
                         <td>
-                            <a href="{{ url('/bank/status/' . $info->user_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-danger btn-block">{{ $info->auth_status == 1 ? "Active" : "Inactive" }}</a>
+                            <a href="{{ url('/bank/status/' . $info->user_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->auth_status == 1 ? 'info' : 'danger' }} btn-block">{{ $info->auth_status == 1 ? "Active" : "Inactive" }}</a>
                         </td>
                     </tr>
 
