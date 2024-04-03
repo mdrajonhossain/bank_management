@@ -23,19 +23,19 @@
 
     <!-- Content -->
     <div class="content">
-        <h2>FDR Manage </h2>
+        <h2 style="font-size: 20px; font-weight: bolder; margin-top: 05px; margin-bottom: 30px;">FDR Manage </h2>
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Bank</th>
-                        <th>Branch Name</th>
-                        <th>Application type</th>                        
-                        <th>Received</th>
-                        <th>View</th>
-                        <th>Branch Status</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Name</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Phone</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch Name</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Application type</th>                        
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Received</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">View</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch Status</th>
                     </tr>
                 </thead>
                 <tbody>
