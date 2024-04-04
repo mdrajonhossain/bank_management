@@ -7,12 +7,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     
 </head>
-<body>
+<body style="background-color: #eee;">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-5">
-                <div class="card">
-                    <div class="card-header text-center">Login System</div>
+            <div class="col-md-5 mt-5">
+                <div class="card" style="border: none;
+                box-shadow: 0 5px 10px rgba(0,0,0,.1);
+                background: #fff; margin-top: 70px;">
+                    <div class="card-header text-center" style="font-weight: bold; font-size: 30px;">Login Now</div>
 
                     <div class="card-body">
                         <!-- <form method="POST" action="{{ route('login') }}"> -->
@@ -21,7 +23,7 @@
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">{{ __('Email Address') }}</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input style="background: #eee;" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter your email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -31,7 +33,7 @@
 
                             <div class="mb-3">
                                 <label for="password" class="form-label">{{ __('Password') }}</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input style="background: #eee;" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter your password" required autocomplete="current-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,9 +47,9 @@
                             </div>
 
                             <div class="mb-0">
-                                <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
+                                <button type="submit" class="btn btn-primary" style="border-radius: 10px;">{{ __('Login') }}</button>
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" style="text-decoration: none; font-weight: bold;" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
