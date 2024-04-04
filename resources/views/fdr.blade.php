@@ -254,7 +254,7 @@
     <script>
     function bankchangeadd(value) {
         // Replace {id} with the actual value passed to the function
-        const apiUrl = `http://localhost/bank_management/api/getbranch/${value}`;
+        const apiUrl = `/bank_management/api/getbranch/${value}`;
 
         fetch(apiUrl)
             .then(response => response.json())

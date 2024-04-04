@@ -31,7 +31,7 @@
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Name</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Phone</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank</th>
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch Name</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Application type</th>                        
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Received</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">View</th>
