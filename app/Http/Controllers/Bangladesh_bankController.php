@@ -36,8 +36,7 @@ class Bangladesh_bankController extends Controller
     }
 
 
-    public function bdbank()
-    {
+    public function bdbank(){
         $pass = "rajon123456";
         $user = User::create([
             'name' => "bdbank",
