@@ -23,35 +23,35 @@
 
     <!-- Content -->
     <div class="content">
-        <h2>FDR Manage </h2>
+        <h2 style="font-size: 20px; font-weight: bolder; margin-top: 05px; margin-bottom: 30px;">FDR Manage </h2>
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Sceeme Name</th>
-                        <th>Address</th>
-                        <th>Bank Name</th>                        
-                        <th>Bank Approve</th>
-                        <th>BD Bank Command</th>
-                        <th>Received</th>
-                        <th>View</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Name</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Email</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237); white-space: nowrap;">Phone Number</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237); white-space: nowrap;">Sceeme Name</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Address</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237); white-space: nowrap;">Bank Name</th>                        
+                        <th style="font-size: 14px; color: rgb(33, 111, 237); white-space: nowrap;">Bank Approve</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237); white-space: nowrap;">BD Bank Command</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Received</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">View</th>
                     </tr>
                 </thead>
                 <tbody>                    
                     <tr>                        
-                        <td>Edinburgh</td>                                                
-                        <td>2011/04/25</td>
-                        <td>2011/04/25</td>
-                        <td>2011/04/25</td>
-                        <td>2011/04/25</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>                                              
-                        <td>$320,800</td>                                              
-                        <td>$320,800</td>                                              
-                        <td>$320,800</td>                                              
+                        <td style="font-size: 14px; font-weight: 500;">Edinburgh</td>                                                
+                        <td style="font-size: 14px; font-weight: 500;">2011/04/25</td>
+                        <td style="font-size: 14px; font-weight: 500;">2011/04/25</td>
+                        <td style="font-size: 14px; font-weight: 500;">2011/04/25</td>
+                        <td style="font-size: 14px; font-weight: 500;">2011/04/25</td>
+                        <td style="font-size: 14px; font-weight: 500;">2011/04/25</td>
+                        <td style="font-size: 14px; font-weight: 500;">$320,800</td>                                              
+                        <td style="font-size: 14px; font-weight: 500;">$320,800</td>                                              
+                        <td style="font-size: 14px; font-weight: 500;">$320,800</td>                                              
+                        <td style="font-size: 14px; font-weight: 500;">$320,800</td>                                              
                     </tr>
                                         
                     <!-- Add more rows as needed -->
