@@ -9,13 +9,37 @@ use App\Models\Fdr_model;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 
 class Bangladesh_bankController extends Controller
 {
     //
     public function Bangladesh_bankpanal(){        
-        $data = Fdr_model::all();
+        
+
+        $data = DB::select("
+        SELECT 
+            fdr_models.*, 
+            bankdatamodels.*, 
+            branchdatamodels.*, 
+            users.name as auth_name, 
+            users.email as authemail, 
+            users.is_active as auth_status
+        FROM 
+            fdr_models
+        LEFT JOIN 
+            bankdatamodels ON fdr_models.aply_bank_id = bankdatamodels.id
+        LEFT JOIN 
+            branchdatamodels ON fdr_models.aply_branch_id = branchdatamodels.id
+        LEFT JOIN 
+            users ON bankdatamodels.user_id = users.id
+    ");
+        
+
+        
+
+
         return view('bangladeshbank.bangladeshbank', ['data' => $data]);        
     }
 
