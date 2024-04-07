@@ -35,7 +35,7 @@
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">User Name</th>                        
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Received</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">View</th>
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch Status</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,18 +48,18 @@
                         <td>{{$info->auth_name }}</td>
                         <!-- <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td> -->
                         <td>
-                            @if($info->branch_verifyed)
-                            <button type="button" class="btn btn-{{ $info->brank_verifyed == 1 ? 'info' : 'danger' }}"
+                            @if($info->brank_verifyed)
+                            <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">Received</button>
                             @else
                             <a class="btn btn-danger btn-block">Approve</a>
                             @endif
                         </td>
                         <td>
-                            <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
+                            <a href="{{ url('/bdbank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
                         </td>
                         <td>
-                            <a href="{{ url('/bank/status/' . $info->user_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->auth_status == 0 ? 'info' : 'danger' }} btn-block">{{ $info->auth_status == 0 ? "Active" : "Inactive" }}</a>
+                            <a href="{{ url('/bdbank/status/' . $info->user_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->auth_status == 0 ? 'info' : 'danger' }} btn-block">{{ $info->auth_status == 0 ? "Active" : "Inactive" }}</a>
                         </td>
                     </tr>
 
@@ -73,7 +73,7 @@
                                     </h3>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{url('/bank/approve')}}" method="post" enctype="multipart/form-data">
+                                    <form action="{{url('/bangladeshBank/approve')}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" value="{{ $info->id }}" name="id" hidden>
                                         <div class="form-group">
@@ -87,7 +87,7 @@
                                         <div class="form-group">
                                             <label for="textArea">Commend:</label>
                                             <textarea class="form-control" name="commend" required id="textArea"
-                                                rows="3">{{ $info->bank_comment }}</textarea>
+                                                rows="3">{{ $info->bdbank_comment }}</textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
