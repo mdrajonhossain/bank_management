@@ -17,6 +17,25 @@ class BankController extends Controller{
     public function dashboardpanal(){ 
         return view('bank.bankdash');
     }
+
+    public function bank_branch(){ 
+       
+
+        $auth_user_id = Auth::id();
+
+        $data = DB::table('branchdatamodels')
+            ->select('branchdatamodels.*', 'bankdatamodels.*', 'users.id as userId','users.name as username', 'users.email as user_email', 'users.is_active')   
+            ->leftJoin('bankdatamodels', 'branchdatamodels.bank_id', '=', 'bankdatamodels.id')
+            ->leftJoin('users', 'branchdatamodels.user_id', '=', 'users.id')
+            ->where('branchdatamodels.bank_id', $auth_user_id)
+            ->get();
+        
+
+        return view('bank.bankbranch', ['data' => $data]);        
+    }
+
+    
+
     //
     public function bankpanal(){        
         // $data = Fdr_model::all();
@@ -63,13 +82,17 @@ class BankController extends Controller{
     public function statusdata($id, $status){
         try{
             $affectedRows = User::where('id', $id)->update(['is_active' => $status]);
-            return redirect('/bank')->with('add_success', 'save successfully');   
+            // return redirect('/bank')->with('add_success', 'save successfully');   
+            return redirect()->back();
         }
         catch (\PDOException $e) {
-            return redirect('/bank')->with('add_success', 'save successfully');   
+            // return redirect('/bank')->with('add_success', 'save successfully');   
+            return redirect()->back();
         }        
     }
 
+
+    
 
 
 
