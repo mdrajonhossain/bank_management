@@ -23,7 +23,7 @@
 
     <!-- Content -->
     <div class="content">
-        <h2>FDR Manage </h2>
+        <div class="bg-warning text-light p-3" style="font-size: 20px;">FDR Manage </div>
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
