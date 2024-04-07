@@ -47,8 +47,12 @@
                         <td>{{$info->service_name }}</td>
                         <td>
                             @if($info->branch_verifyed)
-                            <a
-                                class="btn btn-{{ $info->branch_verified == 1 ? 'info' : 'danger' }} btn-block">Approve</a>
+                            <button type="button" class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }}"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">
+                                {{ $info->branch_verifyed == 1 ? 'Appruve' : 'Receive' }}
+                            </button>
+                            <!-- <a
+                                class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }} btn-block">Approve</a> -->
                             @else
                             <button type="button" class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }}"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">
