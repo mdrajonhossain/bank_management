@@ -103,6 +103,8 @@ Route::middleware(['auth', 'is_BangladeshBank'])->prefix('bangladeshBank')->grou
     Route::get('/', [Bangladesh_bankController::class, 'Bangladesh_bankpanal']);
     Route::post('/approve', [Bangladesh_bankController::class, 'approvebdbank']);
 
+    Route::get('/status/{id}/{status}', [Bangladesh_bankController::class, 'bank_statusdata']);    
+
     Route::get('/views/{id}', [Bangladesh_bankController::class, 'viewdata']);
 });
 
