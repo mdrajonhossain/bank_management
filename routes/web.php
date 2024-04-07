@@ -76,7 +76,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth', 'is_Branch'])->prefix('branch')->group(function () {
-    Route::get('/', [BranchController::class, 'branchpanal']);
+    Route::get('/', [BranchController::class, 'dashboardpanal']);
+    Route::get('/fdrmanage', [BranchController::class, 'branchpanal']);
     
     Route::post('/approve', [BranchController::class, 'approvebranch']);
     Route::get('/views/{id}', [BranchController::class, 'viewdata']);

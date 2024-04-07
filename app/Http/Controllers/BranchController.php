@@ -11,6 +11,15 @@ use App\Models\Branchdatamodel;
 
 class BranchController extends Controller{
     //
+
+    // 
+
+    public function dashboardpanal(){ 
+        return view('branch.branchdash');
+    }
+
+
+
     public function branchpanal(){        
         // $data = Fdr_model::all();
         
