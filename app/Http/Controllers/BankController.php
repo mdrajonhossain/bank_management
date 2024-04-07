@@ -11,6 +11,12 @@ use App\Models\User;
 
 
 class BankController extends Controller{
+
+
+    // 
+    public function dashboardpanal(){ 
+        return view('bank.bankdash');
+    }
     //
     public function bankpanal(){        
         // $data = Fdr_model::all();
