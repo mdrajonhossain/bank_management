@@ -59,8 +59,7 @@
                             <a href="{{ url('/bdbank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
                         </td>
                         <td>
-                        <a href="{{ url('/bangladeshBank/status/' . $info->id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->auth_status == 1 ? 'info' : 'danger' }} btn-block">{{ $info->auth_status == 1 ? "Active" : "Inactive" }}</a>
-
+                            <a href="{{ url('/bangladeshBank/status/' . $info->update_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->auth_status == 0 ? 'info' : 'danger' }} btn-block">{{ $info->auth_status == 0 ? "Active" : "Inactive" }}</a>
                         </td>
                     </tr>
 

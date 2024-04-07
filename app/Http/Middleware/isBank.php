@@ -21,9 +21,16 @@ class isBank
     // }
 
     public function handle(Request $request, Closure $next){
+        
         if(Auth::check() && auth()->user()->usertype == 1){
+             
+            if(Auth::check() && auth()->user()->is_active == '0'){
+                Auth::logout();
+                return redirect('/login')->with('error', 'Your account is disabled. Please contact support.');
+            }
             return $next($request);
         }
+
         return redirect()->back()->with('error', 'Yoy do not access of admin');
     }
 

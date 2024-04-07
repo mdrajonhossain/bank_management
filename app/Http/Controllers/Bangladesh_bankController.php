@@ -19,13 +19,12 @@ class Bangladesh_bankController extends Controller
         
 
         $data = DB::select("
-        SELECT fdr_models.*, bankdatamodels.*, branchdatamodels.*, users.name as auth_name, users.email as authemail, users.is_active as auth_status
+        SELECT fdr_models.*, bankdatamodels.*, branchdatamodels.*, users.id as update_id, users.name as auth_name, users.email as authemail, users.is_active as auth_status
         FROM fdr_models
         LEFT JOIN bankdatamodels ON fdr_models.aply_bank_id = bankdatamodels.id
         LEFT JOIN branchdatamodels ON fdr_models.aply_branch_id = branchdatamodels.id
         LEFT JOIN users ON bankdatamodels.user_id = users.id");
        
-
 
         return view('bangladeshbank.bangladeshbank', ['data' => $data]);        
     }
@@ -66,8 +65,7 @@ class Bangladesh_bankController extends Controller
 
 
     // bank account enable /disable   
-    public function bank_statusdata($id, $status){
-         
+    public function bank_statusdata($id, $status){                 
         try{
             $affectedRows = User::where('id', $id)->update(['is_active' => $status]);
             // return redirect('/bank')->with('add_success', 'save successfully');   
