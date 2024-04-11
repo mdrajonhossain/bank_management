@@ -106,6 +106,7 @@ Route::middleware(['auth', 'is_BangladeshBank'])->prefix('bangladeshBank')->grou
     Route::get('/status/{id}/{status}', [Bangladesh_bankController::class, 'bank_statusdata']);    
 
     Route::get('/views/{id}', [Bangladesh_bankController::class, 'viewdata']);
+    Route::get('/banklist', [Bangladesh_bankController::class, 'bnklist']);
 });
 
 

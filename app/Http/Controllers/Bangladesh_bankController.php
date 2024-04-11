@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Fdr_model;
+use App\Models\Bankdatamodel;
 
 
 use App\Models\User;
@@ -44,6 +45,21 @@ class Bangladesh_bankController extends Controller
         $data = Fdr_model::find($id);
         return view('bangladeshbank.view', ['data' => $data]);
     }
+
+
+    public function bnklist(){        
+        // $data = Bankdatamodel::all();
+        $data = DB::table('users')
+        ->select('bankdatamodels.id as bank_id', 'bankdatamodels.bank_name', 'users.id as userId', 'users.name', 'users.email', 'users.usertype', 'users.is_active',)
+        ->leftJoin('bankdatamodels', 'bankdatamodels.user_id', '=', 'users.id')
+        ->where('users.usertype', '=', 1)
+        ->get();
+
+        
+        
+        return view('bangladeshbank.banklist', ['data' => $data]);
+    }
+
 
 
     public function bdbank(){
