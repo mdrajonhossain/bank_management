@@ -50,11 +50,11 @@
                         <td>
                             @if($info->brank_verifyed)
                             <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">Received</button>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->bdbank_verifyed == 1 ? 'Received' : 'Reject' }}</button>
                             @else
                             <!-- <a class="btn btn-danger btn-block">Approve</a> -->
                             <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">Received</button>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->bdbank_verifyed == 1 ? 'Received' : 'Reject' }}</button>
                             @endif
                         </td>
                         <td>
