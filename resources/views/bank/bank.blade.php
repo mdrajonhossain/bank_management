@@ -50,13 +50,13 @@
                         <td>
                             @if($info->branch_verifyed)
                             <button type="button" class="btn btn-{{ $info->brank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">Received</button>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->brank_verifyed == 1 ? 'Received' : 'Reject' }}</button>
                             @else
-                            <a class="btn btn-danger btn-block">Approve</a>
+                             Branch not Received
                             @endif
                         </td>
                         <td>
-                            <a href="{{ url('/bank/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
+                            <a href="{{ url('/bank/views/' . $info->fd_id) }}" class="btn btn-info btn-block">View</a>
                         </td>
                         <td>
                             <a href="{{ url('/bank/status/' . $info->user_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->auth_status == 1 ? 'info' : 'danger' }} btn-block">{{ $info->auth_status == 1 ? "Active" : "Inactive" }}</a>
@@ -64,18 +64,18 @@
                     </tr>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal_{{ $info->id }}" tabindex="-1"
-                        aria-labelledby="exampleModalLabel_{{ $info->id }}" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal_{{ $info->fd_id }}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel_{{ $info->fd_id }}" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3 class="modal-title fs-5" id="exampleModalLabel_{{ $info->id }}">{{$info->name }}
+                                    <h3 class="modal-title fs-5" id="exampleModalLabel_{{ $info->fd_id }}">{{$info->name }}
                                     </h3>
                                 </div>
                                 <div class="modal-body">
                                     <form action="{{url('/bank/approve')}}" method="post" enctype="multipart/form-data">
                                         @csrf
-                                        <input type="text" value="{{ $info->id }}" name="id" hidden>
+                                        <input type="text" value="{{ $info->fd_id }}" name="id" hidden>
                                         <div class="form-group">
                                             <label for="selectOption">Decition Approve/Reject:</label>
                                             <select class="form-control" id="selectOption" name="Approve" required>
