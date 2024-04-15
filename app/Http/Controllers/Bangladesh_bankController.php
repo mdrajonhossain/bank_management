@@ -55,6 +55,8 @@ class Bangladesh_bankController extends Controller
         ->where('users.usertype', '=', 1)
         ->get();
 
+         
+
         
         
         return view('bangladeshbank.banklist', ['data' => $data]);
@@ -81,9 +83,9 @@ class Bangladesh_bankController extends Controller
 
 
     // bank account enable /disable   
-    public function bank_statusdata($id, $status){                 
+    public function bank_statusdata($id, $is_active){                 
         try{
-            $affectedRows = User::where('id', $id)->update(['is_active' => $status]);
+            $affectedRows = User::where('id', $id)->update(['is_active' => $is_active]);
             // return redirect('/bank')->with('add_success', 'save successfully');   
             return redirect()->back();
         }
