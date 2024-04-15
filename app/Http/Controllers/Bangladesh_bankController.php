@@ -41,9 +41,9 @@ class Bangladesh_bankController extends Controller
     }
 
 
-    public function viewdata($id){        
+    public function fdrviewdata($id){          
         $data = Fdr_model::find($id);
-        return view('bangladeshbank.view', ['data' => $data]);
+        return view('bangladeshbank.viewpage', ['data' => $data]);
     }
 
 
