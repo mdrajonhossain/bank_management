@@ -68,10 +68,10 @@ class BankController extends Controller{
     public function approvebank(Request $request){
         try{
             $affectedRows = Fdr_model::where('id', $request->id)->update(['bank_id' => auth()->user()->id, 'brank_verifyed' => $request->Approve, 'bank_comment' => $request->commend]);
-            return redirect('/bank')->with('add_success', 'save successfully');   
+            return redirect()->back();
         }
         catch (\PDOException $e) {
-            return redirect('/bank')->with('add_success', 'save successfully');   
+            return redirect()->back();
         }        
     }
 
