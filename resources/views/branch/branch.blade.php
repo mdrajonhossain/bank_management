@@ -48,38 +48,37 @@
                         <td>
                             @if($info->branch_verifyed)
                             <button type="button" class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">
                                 {{ $info->branch_verifyed == 1 ? 'Appruve' : 'Receive' }}
                             </button>
-                            <!-- <a
-                                class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }} btn-block">Approve</a> -->
+                            <!-- <a class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }} btn-block">Approve</a> -->
                             @else
                             <button type="button" class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->id }}">
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">
                                 {{ $info->branch_verifyed == 1 ? 'Appruve' : 'Receive' }}
                             </button>
                             @endif
                         </td>
                         <td>
-                            <a href="{{ url('/branch/views/' . $info->id) }}" class="btn btn-info btn-block">View</a>
+                            <a href="{{ url('/branch/views/' . $info->fd_id) }}" class="btn btn-info btn-block">View</a>
 
                         </td>
                     </tr>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal_{{ $info->id }}" tabindex="-1"
-                        aria-labelledby="exampleModalLabel_{{ $info->id }}" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal_{{ $info->fd_id }}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel_{{ $info->fd_id }}" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3 class="modal-title fs-5" id="exampleModalLabel_{{ $info->id }}">{{$info->name }}
+                                    <h3 class="modal-title fs-5" id="exampleModalLabel_{{ $info->fd_id }}">{{$info->name }}
                                     </h3>
                                 </div>
                                 <div class="modal-body">
                                     <form action="{{url('/branch/approve')}}" method="post"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        <input type="text" value="{{ $info->id }}" name="id" hidden>
+                                        <input type="text" value="{{ $info->fd_id }}" name="id" hidden>
                                         <div class="form-group">
                                             <label for="selectOption">Decition Approve/Reject:</label>
                                             <select class="form-control" id="selectOption" name="Approve" required>
