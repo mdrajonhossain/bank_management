@@ -112,8 +112,12 @@ class UserController extends Controller{
 
         $bdbank_generateId = $finalgerrate_id ? $finalgerrate_id->verifygenid : null;
 
+
+        $searchid = Fdr_model::where('email', $request->aply_id)->orWhere('phone', $request->aply_id)->first();
         
-        return view('userview', ['data' => $data, 'bdbank_generateId' => $bdbank_generateId]);
+
+        
+        return view('userview', ['data' => $data, 'bdbank_generateId' => $bdbank_generateId, 'search_id' => $searchid->search_id]);
     }
   
   

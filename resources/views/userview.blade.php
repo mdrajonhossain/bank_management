@@ -22,6 +22,12 @@
 
         <tbody>
             @foreach($data as $data)
+            
+            <tr class="bg-{{$data->branch_verifyed == 1 ? 'info' : 'danger' }} text-white">
+                <td class="text-light bg-info">Search Id</td>
+                <td class="text-light bg-info">{{ $search_id }}</td>
+            </tr>
+
             <tr class="bg-{{$data->branch_verifyed == 1 ? 'info' : 'danger' }} text-white">
                 <td>Branch Status</td>
                 <td>{{$data->branch_verifyed == 1 ? "Verified" : "Not verified" }} / {{$data->branch_comment}}</td>
