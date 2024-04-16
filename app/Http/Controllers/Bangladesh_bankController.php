@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Fdr_model;
 use App\Models\Bankdatamodel;
+use App\Models\VerifiedserviceId;
 
 
 use App\Models\User;
@@ -30,15 +31,41 @@ class Bangladesh_bankController extends Controller
         return view('bangladeshbank.bangladeshbank', ['data' => $data]);        
     }
 
+     
+
+
     public function approvebdbank(Request $request){
-        try{
-            $affectedRows = Fdr_model::where('id', $request->id)->update(['bdbank_verifyed' => $request->Approve, 'bdbank_comment' => $request->commend]);
-            return redirect('/bank')->with('add_success', 'save successfully');   
+        try {
+            $dataee = Fdr_model::find($request->id);
+            $randomgenerateor = rand(10547, 999999900);
+            $service_search_id = $dataee->search_id;
+            $final_generate = $dataee->aply_branch_id . '.' . $dataee->aply_bank_id . '.' . $randomgenerateor;
+    
+            $affectedRows = Fdr_model::where('id', $request->id)->update([
+                'bdbank_verifyed' => $request->Approve,
+                'bdbank_comment' => $request->commend
+            ]);
+    
+            if ($affectedRows > 0) {
+                $gener = new VerifiedserviceId;
+                $gener->service_genid = $service_search_id;
+                $gener->verifygenid = $final_generate; // Fixed typo here
+    
+                $gener->save();
+                return redirect()->back();
+            } else {
+                return redirect()->back();
+            }
+        } catch (\PDOException $e) {
+            // Handle specific PDO exceptions or log the error
+            return redirect()->back();
         }
-        catch (\PDOException $e) {
-            return redirect('/bank')->with('add_success', 'save successfully');   
-        }        
     }
+
+
+
+
+
 
 
     public function fdrviewdata($id){          

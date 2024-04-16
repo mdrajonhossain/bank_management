@@ -47,16 +47,25 @@
                         <td>{{$info->service_name }}</td>
                         <td>{{$info->auth_name }}</td>
                         <!-- <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td> -->
+
                         <td>
                             @if($info->brank_verifyed)
-                            <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->bdbank_verifyed == 1 ? 'Verify' : 'Reject' }}</button>
+                            
+                            @if($info->bdbank_verifyed == 1)
+                                <span class="text-info">Verified</div>
                             @else
-                            <!-- <a class="btn btn-danger btn-block">Approve</a> -->
-                            <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->bdbank_verifyed == 1 ? 'Verify' : 'Reject' }}</button>
+                            <button type="button" class="btn btn-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal_{{ $info->fd_id }}">Reject</button>
+                            @endif
+                            
+                            @else
+                                Bank not Received
                             @endif
                         </td>
+
+
+                       
                         <td>
                             <a href="{{ url('/bangladeshBank/views/' . $info->fd_id) }}" class="btn btn-info btn-block">View</a>
                         </td>
@@ -82,7 +91,7 @@
                                             <label for="selectOption">Decition Approve/Reject:</label>
                                             <select class="form-control" id="selectOption" name="Approve" required>
                                                 <option value="" disabled selected>Select an option</option>
-                                                <option value="1">Approve</option>
+                                                <option value="1">Verify</option>
                                                 <option value="0">Reject</option>
                                             </select>
                                         </div>

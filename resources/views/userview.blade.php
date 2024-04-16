@@ -17,34 +17,50 @@
 
 
 
-    <!-- Content -->
-    <div class="content">
 
-        <table class="table">
-            <tbody>
-                @foreach($data as $data)
-                <tr class="bg-{{$data->branch_verifyed == 1 ? 'info' : 'danger' }} text-white">
-                    <td>Branch Status</td>
-                    <td>{{$data->branch_verifyed == 1 ? "True" : "False" }} / {{$data->branch_comment}}</td>
-                </tr>
+    <table class="table" style="width: 30%; margin: 20px auto 0;">
 
-                <tr class="bg-{{$data->brank_verifyed == 1 ? 'info' : 'danger' }} text-white">
-                    <td>Bank Status</td>
-                    <td>{{$data->brank_verifyed == 1 ? "True" : "False" }} / {{$data->bank_comment}}</td>
-                </tr>
+        <tbody>
+            @foreach($data as $data)
+            <tr class="bg-{{$data->branch_verifyed == 1 ? 'info' : 'danger' }} text-white">
+                <td>Branch Status</td>
+                <td>{{$data->branch_verifyed == 1 ? "Verified" : "Not verified" }} / {{$data->branch_comment}}</td>
+            </tr>
 
-                <tr class="bg-{{$data->bdbank_verifyed == 1 ? 'info' : 'danger' }} text-white">
-                    <td>Bangladesh Bank Status</td>
-                    <td>{{$data->bdbank_verifyed == 1 ? "True" : "False" }} / {{$data->bdbank_comment}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+            <tr class="bg-{{$data->brank_verifyed == 1 ? 'info' : 'danger' }} text-white">
+                <td>Bank Status</td>
+                <td>{{$data->brank_verifyed == 1 ? "Verified" : "Not verified" }} / {{$data->bank_comment}}</td>
+            </tr>
 
-        <div class="container">
-            <a href="{{url('/')}}" class="btn btn-primary">Back</a>
-        </div>
+            <tr class="bg-{{$data->bdbank_verifyed == 1 ? 'info' : 'danger' }} text-white">
+                <td>Bangladesh Bank Status</td>
+                <td>{{$data->bdbank_verifyed == 1 ? "Verified" : "Not verified" }} / {{$data->bdbank_comment}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <?php
+        function generateHashCode($inputString) {    
+            $hashCode = md5($inputString);
+            return $hashCode;
+        }
+    ?>
+
+
+
+    <div class="text-center bg-info text-light" style="width: 30%; margin: 20px auto 0; font-size: 20px;">
+        @if($bdbank_generateId)
+        {{ generateHashCode($bdbank_generateId) }}
+        @else
+
+        @endif
     </div>
+
+    <div style="width: 30%; margin: 20px auto 0; border-radius:20px;">
+        <a href="{{url('/')}}" class="btn btn-primary" style="border-radius:10px;">Back</a>
+    </div>
+
 
 
 

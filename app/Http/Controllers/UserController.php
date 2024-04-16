@@ -8,7 +8,7 @@ use App\Models\Fdr_model;
 use App\Models\Bankdatamodel;
 use App\Models\Branchdatamodel;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\VerifiedserviceId;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -93,16 +93,14 @@ class UserController extends Controller{
     }
 
     
+    public function searchfdrstatus(Request $request){
+        $finalgerrate_id = VerifiedserviceId::where('service_genid', $request->aply_id)->first();        
+        $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->get();        
+        $bdbank_generateId = $finalgerrate_id ? $finalgerrate_id->verifygenid : null;
 
-    public function searchfdrstatus(Request $request){     
-        $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->get();
         
-        
-        return view('userview', ['data' => $data]);   
-
+        return view('userview', ['data' => $data, 'bdbank_generateId' => $bdbank_generateId]);
     }
-  
-  
   
   
     public function fdrstatus(){        

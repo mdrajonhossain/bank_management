@@ -51,7 +51,7 @@ class BranchController extends Controller{
     public function approvebranch(Request $request){
         try{
             $affectedRows = Fdr_model::where('id', $request->id)->update(['banch_id' => auth()->user()->id, 'branch_verifyed' => $request->Approve, 'branch_comment' => $request->commend]);
-            // return redirect('/branch')->with('add_success', 'save successfully');   
+            // return redirect('/branch')->with('add_success', 'save successfully');
             return redirect()->back();
         }
         catch (\PDOException $e) {
@@ -59,6 +59,9 @@ class BranchController extends Controller{
             return redirect()->back();
         }        
     }
+
+    
+
 
     public function viewdata($id){        
         $data = Fdr_model::find($id);

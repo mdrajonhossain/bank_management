@@ -32,7 +32,7 @@
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Phone</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch</th>
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Application type</th>                        
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Application type</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Verify</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">View</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch Status</th>
@@ -49,62 +49,69 @@
                         <!-- <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td> -->
                         <td>
                             @if($info->branch_verifyed)
-                            <button type="button" class="btn btn-{{ $info->brank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->brank_verifyed == 1 ? 'Verify' : 'Reject' }}</button>
+                            
+                            @if($info->brank_verifyed == 1)
+                            <span class="text-info">Verified</div>
                             @else
-                             Branch not Received
+                            <button type="button" class="btn btn-{{ $info->brank_verifyed == 1 ? 'info' : 'danger' }}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->brank_verifyed == 1 ? 'Verify' : 'Reject' }}</button>
                             @endif
-                        </td>
-                        <td>
-                            <a href="{{ url('/bank/views/' . $info->fd_id) }}" class="btn btn-info btn-block">View</a>
-                        </td>
-                        <td>
-                            <a href="{{ url('/bank/status/' . $info->user_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->auth_status == 1 ? 'info' : 'danger' }} btn-block">{{ $info->auth_status == 1 ? "Active" : "Inactive" }}</a>
-                        </td>
-                    </tr>
+                            
+                            @else
+                            Branch not Received
+                        @endif
+        </td>
+        <td>
+            <a href="{{ url('/bank/views/' . $info->fd_id) }}" class="btn btn-info btn-block">View</a>
+        </td>
+        <td>
+            <a href="{{ url('/bank/status/' . $info->user_id . '/' . ($info->auth_status == 1 ? 0 : 1)) }}"
+                class="btn btn-{{ $info->auth_status == 1 ? 'info' : 'danger' }} btn-block">{{ $info->auth_status == 1 ? "Active" : "Inactive" }}</a>
+        </td>
+        </tr>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal_{{ $info->fd_id }}" tabindex="-1"
-                        aria-labelledby="exampleModalLabel_{{ $info->fd_id }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title fs-5" id="exampleModalLabel_{{ $info->fd_id }}">{{$info->name }}
-                                    </h3>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{url('/bank/approve')}}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="text" value="{{ $info->fd_id }}" name="id" hidden>
-                                        <div class="form-group">
-                                            <label for="selectOption">Decition Approve/Reject:</label>
-                                            <select class="form-control" id="selectOption" name="Approve" required>
-                                                <option value="" disabled selected>Select an option</option>
-                                                <option value="1">Approve</option>
-                                                <option value="0">Reject</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="textArea">Commend:</label>
-                                            <textarea class="form-control" name="commend" required id="textArea"
-                                                rows="3">{{ $info->bank_comment }}</textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                </div>
-                            </div>
-                        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal_{{ $info->fd_id }}" tabindex="-1"
+            aria-labelledby="exampleModalLabel_{{ $info->fd_id }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title fs-5" id="exampleModalLabel_{{ $info->fd_id }}">{{$info->name }}
+                        </h3>
                     </div>
-                    @endforeach
-                    <!-- Add more rows as needed -->
-                </tbody>
-            </table>
+                    <div class="modal-body">
+                        <form action="{{url('/bank/approve')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="text" value="{{ $info->fd_id }}" name="id" hidden>
+                            <div class="form-group">
+                                <label for="selectOption">Decition Approve/Reject:</label>
+                                <select class="form-control" id="selectOption" name="Approve" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="1">Verify</option>
+                                    <option value="0">Reject</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="textArea">Commend:</label>
+                                <textarea class="form-control" name="commend" required id="textArea"
+                                    rows="3">{{ $info->bank_comment }}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
         </div>
+        @endforeach
+        <!-- Add more rows as needed -->
+        </tbody>
+        </table>
+    </div>
     </div>
 
 
