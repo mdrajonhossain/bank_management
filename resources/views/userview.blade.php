@@ -74,7 +74,7 @@ $encryptedText = encryptText($string, "secret_key");
 echo "$encryptedText\n";
 
 $decryptedText = decryptText($encryptedText, "secret_key");
-echo "$decryptedText\n";
+
 
 ?>
 

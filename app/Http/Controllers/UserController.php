@@ -96,6 +96,20 @@ class UserController extends Controller{
     public function searchfdrstatus(Request $request){
         $requestData = $request->all();
 
+
+        // function decryptText($encrypted, $key) {
+        //     $decrypted = openssl_decrypt(base64_decode($encrypted), 'aes-256-cbc', $key, 0, '1234567890123456');
+        //     return $decrypted;
+        // }
+        // $decryptedText = decryptText($request->aply_id, "secret_key");
+        // $words = explode(".", $decryptedText);
+        // $index1 = $words[0];
+        // $number = intval($index1);
+
+        // dd($number);
+        
+
+
         if(!$requestData){
             return redirect('/fdrstatus');
         }
