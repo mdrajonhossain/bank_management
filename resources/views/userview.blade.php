@@ -89,7 +89,7 @@ echo "$decryptedText\n";
 
 
     <div style="width: 30%; margin: 20px auto 0; border-radius:20px;">
-        <a href="{{url('/')}}" class="btn btn-primary" style="border-radius:10px;">Back</a>
+        <a href="{{url('/fdrstatus')}}" class="btn btn-primary" style="border-radius:10px;">Back</a>
     </div>
 
 
