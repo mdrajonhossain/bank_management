@@ -22,7 +22,7 @@
 
         <tbody>
             @foreach($data as $data)
-            
+
             <tr class="bg-{{$data->branch_verifyed == 1 ? 'info' : 'danger' }} text-white">
                 <td class="text-light bg-info">Search Id</td>
                 <td class="text-light bg-info">{{ $search_id }}</td>
@@ -53,30 +53,17 @@
         @if($bdbank_generateId)
 
         <?php
+        function encryptText($string, $key) {
+            $encrypted = openssl_encrypt($string, 'aes-256-cbc', $key, 0, '1234567890123456');
+            return base64_encode($encrypted);
+        }
+        $string = $bdbank_generateId;
+        $encryptedText = encryptText($string, "secret_key");
+    ?>
 
-// Function to encrypt a string
-function encryptText($string, $key) {
-    $encrypted = openssl_encrypt($string, 'aes-256-cbc', $key, 0, '1234567890123456');
-    return base64_encode($encrypted);
-}
-
-// Function to decrypt an encrypted string
-function decryptText($encrypted, $key) {
-    $decrypted = openssl_decrypt(base64_decode($encrypted), 'aes-256-cbc', $key, 0, '1234567890123456');
-    return $decrypted;
-}
-
-// Example usage
-$string = $bdbank_generateId;
-
-
-$encryptedText = encryptText($string, "secret_key");
-echo "$encryptedText\n";
-
-$decryptedText = decryptText($encryptedText, "secret_key");
-
-
-?>
+        {{ "Verified Id :" }}
+        <br />
+        {{ $encryptedText }}
 
 
         @else
