@@ -95,7 +95,8 @@ class UserController extends Controller{
     
     public function searchfdrstatus(Request $request){
         $finalgerrate_id = VerifiedserviceId::where('service_genid', $request->aply_id)->first();        
-        $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->get();        
+        // $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->get();        
+        $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->orWhere('email', 'LIKE', "%$request->aply_id%")->orWhere('phone', 'LIKE', "%$request->aply_id%")->get();
         $bdbank_generateId = $finalgerrate_id ? $finalgerrate_id->verifygenid : null;
 
         
@@ -148,8 +149,8 @@ class UserController extends Controller{
              
         try{
             $post->save();    
-            // return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
-            return view('fdridgeneratorview', ["search_id" => $post->search_id, "Name" => $post->name]);
+            return redirect('/fdrstatus');
+            // return view('fdridgeneratorview', ["search_id" => $post->search_id, "Name" => $post->name]);
         }
         catch (\PDOException $e) {
             return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
