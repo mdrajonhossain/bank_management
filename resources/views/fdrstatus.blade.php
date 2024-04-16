@@ -49,7 +49,7 @@
                 <div class="col-md-6">
                     <form method="POST" class="form-inline my-2 my-lg-0" action="{{ url('/searchfdrstatus') }}">
                         @csrf
-                        <input class="form-control mr-sm-2" type="search" name="aply_id" placeholder="Aply Id" aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search" name="aply_id" placeholder="search_id or email or phone" aria-label="Search">
                         <br />
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Report</button>
                     </form>
