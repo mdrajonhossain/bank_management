@@ -105,6 +105,11 @@ class UserController extends Controller{
         $finalgerrate_id = VerifiedserviceId::where('service_genid', $request->aply_id)->first();        
         // $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->get();        
         $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->orWhere('email', 'LIKE', "%$request->aply_id%")->orWhere('phone', 'LIKE', "%$request->aply_id%")->get();
+
+        if ($data->isEmpty()) {            
+            return redirect('/fdrstatus');
+        }
+
         $bdbank_generateId = $finalgerrate_id ? $finalgerrate_id->verifygenid : null;
 
         
