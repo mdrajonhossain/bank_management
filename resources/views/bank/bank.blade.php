@@ -33,7 +33,7 @@
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Application type</th>                        
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Received</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Verify</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">View</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch Status</th>
                     </tr>
@@ -50,7 +50,7 @@
                         <td>
                             @if($info->branch_verifyed)
                             <button type="button" class="btn btn-{{ $info->brank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->brank_verifyed == 1 ? 'Received' : 'Reject' }}</button>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->brank_verifyed == 1 ? 'Verify' : 'Reject' }}</button>
                             @else
                              Branch not Received
                             @endif

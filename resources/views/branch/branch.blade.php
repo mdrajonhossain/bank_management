@@ -33,7 +33,7 @@
                         <th>Bank</th>
                         <th>Branch Name</th>
                         <th>Application type</th>                        
-                        <th>Received</th>
+                        <th>Verify</th>
                         <th>View</th>
                     </tr>
                 </thead>
@@ -49,13 +49,13 @@
                             @if($info->branch_verifyed)
                             <button type="button" class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }}"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">                                
-                                {{ $info->branch_verifyed == 1 ? 'Received' : 'Reject' }}
+                                {{ $info->branch_verifyed == 1 ? 'Verify' : 'Reject' }}
                             </button>
                             <!-- <a class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }} btn-block">Approve</a> -->
                             @else
                             <button type="button" class="btn btn-{{ $info->branch_verifyed == 1 ? 'info' : 'danger' }}"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">
-                                {{ $info->branch_verifyed == 1 ? 'Received' : 'Reject' }}
+                                {{ $info->branch_verifyed == 1 ? 'Verify' : 'Reject' }}
                             </button>
                             @endif
                         </td>

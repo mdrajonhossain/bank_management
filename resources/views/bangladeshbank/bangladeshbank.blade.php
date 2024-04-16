@@ -33,7 +33,7 @@
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Application type</th>                        
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">User Name</th>                        
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Received</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Verify</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">View</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank Status</th>
                     </tr>
@@ -50,11 +50,11 @@
                         <td>
                             @if($info->brank_verifyed)
                             <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->bdbank_verifyed == 1 ? 'Received' : 'Reject' }}</button>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->bdbank_verifyed == 1 ? 'Verify' : 'Reject' }}</button>
                             @else
                             <!-- <a class="btn btn-danger btn-block">Approve</a> -->
                             <button type="button" class="btn btn-{{ $info->bdbank_verifyed == 1 ? 'info' : 'danger' }}"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->bdbank_verifyed == 1 ? 'Received' : 'Reject' }}</button>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $info->fd_id }}">{{ $info->bdbank_verifyed == 1 ? 'Verify' : 'Reject' }}</button>
                             @endif
                         </td>
                         <td>
