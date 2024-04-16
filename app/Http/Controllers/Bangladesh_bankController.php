@@ -37,9 +37,12 @@ class Bangladesh_bankController extends Controller
     public function approvebdbank(Request $request){
         try {
             $dataee = Fdr_model::find($request->id);
-            $randomgenerateor = rand(10547, 999999900);
+
+            // $randomgenerateor = rand(10547, 999999900);
+
+            
             $service_search_id = $dataee->search_id;
-            $final_generate = $dataee->aply_branch_id . '.' . $dataee->aply_bank_id . '.' . $randomgenerateor;
+            $final_generate = $request->id . '.' . $dataee->aply_branch_id . '.' . $dataee->aply_bank_id;
     
             $affectedRows = Fdr_model::where('id', $request->id)->update([
                 'bdbank_verifyed' => $request->Approve,
