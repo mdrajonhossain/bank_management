@@ -19,9 +19,9 @@
 
     @include('bangladeshbank.leftbar')
 
-
+  
     <!-- Content -->
-    <div class="content">
+    <div class="content" style="margin-top: 80px;">
 
         <table class="table">
             <tbody>                                
