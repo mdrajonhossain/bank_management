@@ -40,22 +40,53 @@
         </tbody>
     </table>
 
-    <?php
-        function generateHashCode($inputString) {    
-            $hashCode = md5($inputString);
-            return $hashCode;
-        }
-    ?>
-
+ 
 
 
     <div class="text-center bg-info text-light" style="width: 30%; margin: 20px auto 0; font-size: 20px;">
-        @if($bdbank_generateId)
-        {{ generateHashCode($bdbank_generateId) }}
-        @else
+    @if($bdbank_generateId)
+        
+    <?php
 
-        @endif
-    </div>
+// Function to encrypt a string
+function encryptText($string, $key) {
+    $encrypted = openssl_encrypt($string, 'aes-256-cbc', $key, 0, '1234567890123456');
+    return base64_encode($encrypted);
+}
+
+// Function to decrypt an encrypted string
+function decryptText($encrypted, $key) {
+    $decrypted = openssl_decrypt(base64_decode($encrypted), 'aes-256-cbc', $key, 0, '1234567890123456');
+    return $decrypted;
+}
+
+// Example usage
+$string = $bdbank_generateId;
+
+
+$encryptedText = encryptText($string, "secret_key");
+echo "$encryptedText\n";
+
+$decryptedText = decryptText($encryptedText, "secret_key");
+echo "$decryptedText\n";
+
+?>
+
+        
+    @else
+        
+    @endif
+
+    
+   
+</div>
+
+
+
+ 
+
+
+
 
     <div style="width: 30%; margin: 20px auto 0; border-radius:20px;">
         <a href="{{url('/')}}" class="btn btn-primary" style="border-radius:10px;">Back</a>
