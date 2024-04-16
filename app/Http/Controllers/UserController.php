@@ -94,6 +94,14 @@ class UserController extends Controller{
 
     
     public function searchfdrstatus(Request $request){
+        $requestData = $request->all();
+
+        if(!$requestData){
+            return redirect('/fdrstatus');
+        }
+
+
+
         $finalgerrate_id = VerifiedserviceId::where('service_genid', $request->aply_id)->first();        
         // $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->get();        
         $data = Fdr_model::where('search_id', 'LIKE', "%$request->aply_id%")->orWhere('email', 'LIKE', "%$request->aply_id%")->orWhere('phone', 'LIKE', "%$request->aply_id%")->get();

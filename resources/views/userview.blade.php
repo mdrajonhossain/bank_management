@@ -40,13 +40,13 @@
         </tbody>
     </table>
 
- 
+
 
 
     <div class="text-center bg-info text-light" style="width: 30%; margin: 20px auto 0; font-size: 20px;">
-    @if($bdbank_generateId)
-        
-    <?php
+        @if($bdbank_generateId)
+
+        <?php
 
 // Function to encrypt a string
 function encryptText($string, $key) {
@@ -72,18 +72,15 @@ echo "$decryptedText\n";
 
 ?>
 
-        
-    @else
-        
-    @endif
 
-    
-   
-</div>
+        @else
+
+        @endif
 
 
 
- 
+    </div>
+
 
 
 
