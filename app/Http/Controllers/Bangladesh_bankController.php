@@ -77,7 +77,7 @@ class Bangladesh_bankController extends Controller
     }
 
 
-    public function bnklist(){        
+    public function bnklist(){
         // $data = Bankdatamodel::all();
         $data = DB::table('users')
         ->select('bankdatamodels.id as bank_id', 'bankdatamodels.bank_name', 'users.id as userId', 'users.name', 'users.email', 'users.usertype', 'users.is_active',)
@@ -118,6 +118,12 @@ class Bangladesh_bankController extends Controller
             // return redirect('/bank')->with('add_success', 'save successfully');   
             return redirect()->back();
         }        
+    }
+
+
+    public function bankregister(){
+                
+        return view('bangladeshbank.bank_register');
     }
 
 
