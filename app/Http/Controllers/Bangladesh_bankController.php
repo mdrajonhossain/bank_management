@@ -136,7 +136,7 @@ class Bangladesh_bankController extends Controller
         ]);
     
         if ($validator->fails()) {
-            return redirect('/register')->withErrors($validator)->withInput();
+            return redirect()->back();
         }
     
         $user = User::create([
@@ -153,13 +153,13 @@ class Bangladesh_bankController extends Controller
                     'branch_name' => $request->branch_name,
                     'user_id' => $user->id,
                 ]);
-                return redirect('/branch');
+                return redirect()->back();
             } elseif ($user->usertype === '1') {
                 Bankdatamodel::create([
                     'user_id' => $user->id,
                     'bank_name' => $request->bank_name,
                 ]);
-                return redirect('/bank');
+                return redirect()->back();
             }
         } else {
             // Handle user creation failure

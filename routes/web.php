@@ -91,6 +91,9 @@ Route::middleware(['auth', 'is_Bank'])->prefix('bank')->group(function () {
     Route::get('/bank_branch', [BankController::class, 'bank_branch']);
     Route::post('/approve', [BankController::class, 'approvebank']);
     Route::get('/views/{id}', [BankController::class, 'viewdata']);
+
+    Route::get('/branchregister', [BankController::class, 'branchregister']);    
+    Route::post('/addbranchregister', [BankController::class, 'addbranchregister']);
     
     
     // branch account enable /disable 

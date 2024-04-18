@@ -8,6 +8,13 @@ use App\Models\Fdr_model;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
+use App\Models\Bankdatamodel;
+use App\Models\Branchdatamodel;
+
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class BankController extends Controller{
@@ -92,6 +99,55 @@ class BankController extends Controller{
             return redirect()->back();
         }        
     }
+
+
+
+    public function branchregister(){          
+        
+        $bank_id = Bankdatamodel::where('user_id', auth()->user()->id)->first();
+
+        return view('bank.branch_register',['bank_id'=> $bank_id]);
+    }
+
+
+    public function addbranchregister(Request $request) {
+         
+
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'usertype' => 'required|string',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect('/bank/branchregister');
+        }
+    
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'usertype' => $request->usertype,
+        ]);
+    
+        if ($user) {            
+            if ($user->usertype === '0') {
+                Branchdatamodel::create([
+                    'bank_id' => $request->bankid,
+                    'branch_name' => $request->branch_name,
+                    'user_id' => $user->id,
+                ]);
+                return redirect('/bank/branchregister');
+            }
+        } else {
+            // Handle user creation failure
+            // Log error or return error message
+        }
+    }
+
+
 
 
     
