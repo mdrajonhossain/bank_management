@@ -25,7 +25,100 @@
     <div class="content">
         <h2>Bank List</h2>
         <div class="table-responsive">
-            Bank Register
+            <br/>
+        <div class="col-md-8 mx-auto">
+                <div class="card">
+                    <!-- <div class="card-header">{{ __('User Registration') }}</div> -->
+
+                    <div class="card-body">
+                        <form method="POST" action="{{ url('/bangladeshBank/addbankregister') }}">
+                            @csrf
+                            <!-- CSRF Protection -->
+
+                            <!-- Name Field -->
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <div class="col-md-6">
+                                    <input id="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Email Address Field -->
+                            <div class="form-group row">
+                                <label for="email"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Email Address') }}</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" required autocomplete="email">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Password Field -->
+                            <div class="form-group row">
+                                <label for="password"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <div class="col-md-6">
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="new-password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Confirm Password Field -->
+                            <div class="form-group row">
+                                <label for="password-confirm"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
+                                </div>
+                            </div>
+                                                   
+                            
+                            <input type="text" value="1" class="form-control" name="usertype" hidden>
+                                   
+
+                            <!-- Bank Fields -->
+                            <div class="bank" id="bankFields">
+                                <div class="form-group row">
+                                    <label for="bank-name" class="col-md-4 col-form-label text-md-right">Bank
+                                        Name</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="bank-name" class="form-control" name="bank_name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Register Button -->
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Register') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -44,12 +137,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-
-    <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
     </script>
 
 </body>

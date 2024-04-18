@@ -19,46 +19,46 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller{
 
 
-    public function userRegister(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'usertype' => 'required|string',
-        ]);
+    // public function userRegister(Request $request) {
+    //     $validator = Validator::make($request->all(), [
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users',
+    //         'password' => 'required|string|min:6|confirmed',
+    //         'usertype' => 'required|string',
+    //     ]);
     
-        if ($validator->fails()) {
-            return redirect('/register')->withErrors($validator)->withInput();
-        }
+    //     if ($validator->fails()) {
+    //         return redirect('/register')->withErrors($validator)->withInput();
+    //     }
     
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'usertype' => $request->usertype,
-        ]);
+    //     $user = User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'password' => bcrypt($request->password),
+    //         'usertype' => $request->usertype,
+    //     ]);
     
-        if ($user) {
-            Auth::login($user);
-            if ($user->usertype === '0') {
-                Branchdatamodel::create([
-                    'bank_id' => $request->bankid,
-                    'branch_name' => $request->branch_name,
-                    'user_id' => $user->id,
-                ]);
-                return redirect('/branch');
-            } elseif ($user->usertype === '1') {
-                Bankdatamodel::create([
-                    'user_id' => $user->id,
-                    'bank_name' => $request->bank_name,
-                ]);
-                return redirect('/bank');
-            }
-        } else {
-            // Handle user creation failure
-            // Log error or return error message
-        }
-    }
+    //     if ($user) {
+    //         Auth::login($user);
+    //         if ($user->usertype === '0') {
+    //             Branchdatamodel::create([
+    //                 'bank_id' => $request->bankid,
+    //                 'branch_name' => $request->branch_name,
+    //                 'user_id' => $user->id,
+    //             ]);
+    //             return redirect('/branch');
+    //         } elseif ($user->usertype === '1') {
+    //             Bankdatamodel::create([
+    //                 'user_id' => $user->id,
+    //                 'bank_name' => $request->bank_name,
+    //             ]);
+    //             return redirect('/bank');
+    //         }
+    //     } else {
+    //         // Handle user creation failure
+    //         // Log error or return error message
+    //     }
+    // }
 
 
     public function login(Request $request) {

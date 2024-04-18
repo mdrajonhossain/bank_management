@@ -121,9 +121,50 @@ class Bangladesh_bankController extends Controller
     }
 
 
-    public function bankregister(){
-                
+    public function bankregister(){                
         return view('bangladeshbank.bank_register');
+    }
+
+
+
+    public function addbankregister(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'usertype' => 'required|string',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect('/register')->withErrors($validator)->withInput();
+        }
+    
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'usertype' => $request->usertype,
+        ]);
+    
+        if ($user) {            
+            if ($user->usertype === '0') {
+                Branchdatamodel::create([
+                    'bank_id' => $request->bankid,
+                    'branch_name' => $request->branch_name,
+                    'user_id' => $user->id,
+                ]);
+                return redirect('/branch');
+            } elseif ($user->usertype === '1') {
+                Bankdatamodel::create([
+                    'user_id' => $user->id,
+                    'bank_name' => $request->bank_name,
+                ]);
+                return redirect('/bank');
+            }
+        } else {
+            // Handle user creation failure
+            // Log error or return error message
+        }
     }
 
 
