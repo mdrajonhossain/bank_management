@@ -7,15 +7,15 @@
         style="font-size: 15px; font-weight: 500; text-decoration:none; {{ Request::is('bank') ? 'background-color: #ddd; color: blue;' : '' }}">Dashboard</a>
     
     <a class="text-warning hover:text-info" href="{{ url('/bangladeshBank') }}"
-        style="font-size: 15px; font-weight: 500; text-decoration:none; {{ Request::is('bank/apli_received') ? 'background-color: #ddd; color: blue;' : '' }}">FDR
+        style="font-size: 15px; font-weight: 500; text-decoration:none; {{ Request::is('bangladeshBank') ? 'background-color: #ddd; color: blue;' : '' }}">FDR
         Manage</a>
 
     <a class="text-warning hover:text-info" href="{{ url('/bangladeshBank/bankregister') }}"
-        style="font-size: 15px; font-weight: 500; text-decoration:none; {{ Request::is('bank/apli_received') ? 'background-color: #ddd; color: blue;' : '' }}">
+        style="font-size: 15px; font-weight: 500; text-decoration:none; {{ Request::is('bangladeshBank/bankregister') ? 'background-color: #ddd; color: blue;' : '' }}">
         Register Bank</a>
     
-    <a class="text-warning hover:text-info" href="{{ url('/bangladeshBank/banklist') }}"
-        style="font-size: 15px; font-weight: 500; text-decoration:none; {{ Request::is('bank/apli_received') ? 'background-color: #ddd; color: blue;' : '' }}">Bank List</a>
+    <a class="text-warning hover:text-info" href="{{ url('bangladeshBank/banklist') }}"
+        style="font-size: 15px; font-weight: 500; text-decoration:none; {{ Request::is('bangladeshBank/banklist') ? 'background-color: #ddd; color: blue;' : '' }}">Bank List</a>
         
 </div>
 
