@@ -154,7 +154,7 @@ class UserController extends Controller{
 
     public function fdrformsend(Request $request){
 
-         
+         dd($request->branchid);
 
         $randomNumber = rand(10547, 971264700);
 
@@ -176,10 +176,13 @@ class UserController extends Controller{
         $post->district = $request->district;
         $post->state = $request->state;
         $post->aply_bank_id = $request->bankid;        
+        $post->genarate_id = "00";
         $post->aply_branch_id = $request->branchid;
              
         try{
-            $post->save();    
+            $post->save();  
+            
+            
             return redirect('/fdrstatus');
             // return view('fdridgeneratorview', ["search_id" => $post->search_id, "Name" => $post->name]);
         }

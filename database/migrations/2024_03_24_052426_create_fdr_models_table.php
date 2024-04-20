@@ -32,6 +32,8 @@ class CreateFdrModelsTable extends Migration
             $table->string('state');  
             $table->string('aply_branch_id');
             $table->string('aply_bank_id');
+            
+            $table->string('genarate_id');
 
             $table->string('banch_id')->default("")->nullable();            
             $table->boolean('branch_verifyed')->default(false)->nullable();
