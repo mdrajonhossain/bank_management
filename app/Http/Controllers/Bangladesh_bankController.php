@@ -91,25 +91,31 @@ class Bangladesh_bankController extends Controller
 
 
     public function bdbank(){
-        $pass = "rajon123456";
-        $user = User::create([
-            'name' => "bdbank",
-            'email' => "bdbank@gmail.com",
-            'password' => bcrypt($pass),
-            'gen_id' => '00',            
-            'usertype' => 2,
-        ]);
-
-        
-        $user->gen_id = '00' . $user->id;
-        $user->is_active = '1';
-        $user->save();
+        try {
+            $pass = "rajon123456";
     
-        // Check if the user type is 2
-        if ($user->usertype === 2) {
-            return redirect('/bangladeshBank');
-        } else {
-            return redirect('/');
+            $user = User::create([
+                'name' => "bdbank",
+                'email' => "bdbank@gmail.com",
+                'password' => bcrypt($pass),
+                'gen_id' => '00',            
+                'usertype' => 2,
+            ]);
+                
+            $user->gen_id = '00' . $user->id;            
+            $user->is_active = '1';        
+            $user->save();
+                    
+            if ($user->usertype === 2) {
+                return redirect('/bangladeshBank');
+            } else {
+                return redirect('/');
+            }
+        } catch (\PDOException $e) {                        
+            return redirect('/login')->with('error', 'Database error occurred.');
+        } catch (\Exception $e) {                        
+            Log::error($e->getMessage());            
+            return redirect('/error')->with('error', 'An unexpected error occurred. Please try again later.');
         }
     }
 
