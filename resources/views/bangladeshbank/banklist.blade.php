@@ -25,14 +25,14 @@
     <div class="content">
         <h2 style="margin-top: 75px; margin-bottom: 30px; font-size: 25px; font-weight: bolder;">Bank List</h2>
         <div class="table-responsive">
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
-                    <tr>                        
+                    <tr>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">UserName</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Generate_id</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank Name</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Email</th>
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank Status</th>
+                        <th class="text-center" style="font-size: 14px; color: rgb(33, 111, 237);">Bank Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,7 +43,14 @@
                         <td>{{$info->bank_name }}</td>
                         <td>{{$info->email }}</td>
                         <td>
-                            <a href="{{ url('/bangladeshBank/status/' . $info->userId . '/' . ($info->is_active == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->is_active == 1 ? 'info' : 'danger' }} btn-block">{{ $info->is_active == 1 ? "Active" : "Inactive" }}</a>
+                            <div class="container text-center">
+                                <div class="btn-group btn-group-block" role="group" aria-label="Button group">
+                                    <a href="{{ url('/bangladeshBank/status/' . $info->userId . '/' . ($info->is_active == 1 ? 0 : 1)) }}"
+                                    class="btn btn-light bg-warning">Branch</a>
+                                    <a href="{{ url('/bangladeshBank/status/' . $info->userId . '/' . ($info->is_active == 1 ? 0 : 1)) }}"
+                                        class="btn btn-{{ $info->is_active == 1 ? 'info' : 'danger' }}">{{ $info->is_active == 1 ? "Active" : "Inactive" }}</a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
