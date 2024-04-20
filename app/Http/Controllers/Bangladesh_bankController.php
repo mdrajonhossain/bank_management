@@ -81,10 +81,11 @@ class Bangladesh_bankController extends Controller
     public function bnklist(){
         // $data = Bankdatamodel::all();
         $data = DB::table('users')
-        ->select('bankdatamodels.id as bank_id', 'bankdatamodels.bank_name', 'users.id as userId', 'users.name', 'users.email', 'users.usertype', 'users.is_active',)
+        ->select('bankdatamodels.id as bank_id', 'bankdatamodels.bank_name', 'users.gen_id as gen_id', 'users.id as userId', 'users.name', 'users.email', 'users.usertype', 'users.is_active',)
         ->leftJoin('bankdatamodels', 'bankdatamodels.user_id', '=', 'users.id')
         ->where('users.usertype', '=', 1)
         ->get();        
+        
         return view('bangladeshbank.banklist', ['data' => $data]);
     }
 
