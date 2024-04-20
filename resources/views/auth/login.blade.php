@@ -48,11 +48,11 @@
                                 @enderror
                             </div>
 
-                            <div class="mb-3 form-check">
+                            <!-- <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" name="remember" id="remember"
                                     {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">{{ __('Remember Me') }}</label>
-                            </div>
+                            </div> -->
 
                             <div class="mb-0">
                                 <button type="submit" class="btn btn-primary"
@@ -60,7 +60,7 @@
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" style="text-decoration: none; font-weight: bold;"
                                     href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    <!-- {{ __('Forgot Your Password?') }} -->
                                 </a>
                                 @endif
                             </div>
