@@ -34,8 +34,9 @@ class BankController extends Controller{
             ->select('branchdatamodels.*', 'bankdatamodels.*', 'users.id as userId','users.name as username', 'users.email as user_email', 'users.is_active')   
             ->leftJoin('bankdatamodels', 'branchdatamodels.bank_id', '=', 'bankdatamodels.id')
             ->leftJoin('users', 'branchdatamodels.user_id', '=', 'users.id')
-            ->where('branchdatamodels.bank_id', $auth_user_id)
+            ->where('bankdatamodels.user_id', $auth_user_id)
             ->get();
+
         
 
         return view('bank.bankbranch', ['data' => $data]);        
