@@ -73,7 +73,7 @@ class UserController extends Controller{
             if ($user->is_active == '0') {
                 // Log out the user and redirect to login page with error message
                 Auth::logout();
-                return redirect('/login')->with('error', 'Your account is disabled. Please contact support.');
+                return redirect('/login')->with('error', 'Your account is blocked. Please contact support for assistance.');
             }
             
             // Redirect user based on their usertype
