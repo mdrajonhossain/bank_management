@@ -96,12 +96,13 @@ class Bangladesh_bankController extends Controller
             'name' => "bdbank",
             'email' => "bdbank@gmail.com",
             'password' => bcrypt($pass),
-            'gen_id' => '00',
+            'gen_id' => '00',            
             'usertype' => 2,
         ]);
 
         
         $user->gen_id = '00' . $user->id;
+        $user->is_active = '1';
         $user->save();
     
         // Check if the user type is 2
