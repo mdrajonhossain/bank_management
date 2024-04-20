@@ -23,7 +23,8 @@
 
     <!-- Content -->
     <div class="content">
-        <h2 style="margin-top: 75px; margin-bottom: 30px; font-size: 25px; font-weight: bolder;">Branch List</h2>
+        <a style="margin-top: 50px; margin-bottom: 10px;" href="{{ url('/bangladeshBank/banklist/') }}" class="btn btn-light bg-warning">Back</a>
+        <h2 style="margin-bottom: 30px; font-size: 25px; font-weight: bolder;">Branch List</h2>
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
