@@ -152,42 +152,48 @@ class UserController extends Controller{
     }
 
 
-    public function fdrformsend(Request $request){
-
-         dd($request->branchid);
-
-        $randomNumber = rand(10547, 971264700);
-
-        $post = new Fdr_model;
-        
-        $post->name = $request->name;
-        $post->search_id = $randomNumber;
-        $post->phone = $request->mobile_number;
-        $post->email = $request->email;
-        $post->etin = $request->etin;
-        $post->nid = $request->nid_number;
-        $post->nomonee_name = $request->nominee_name;
-        $post->nomonee_phone = $request->nominee_number;
-        $post->nomonee_relation = $request->relation;
-        $post->nomonee_nid = $request->nominee_nid;
-        $post->nomonee_etin = $request->nominee_etin;
-        $post->service_name = $request->service_name;
-        $post->post_code =  $request->code;
-        $post->district = $request->district;
-        $post->state = $request->state;
-        $post->aply_bank_id = $request->bankid;        
-        $post->genarate_id = "00";
-        $post->aply_branch_id = $request->branchid;
-             
-        try{
-            $post->save();  
-            
-            
+    public function fdrformsend(Request $request) {
+        try {
+            // Find the branch data
+            $branch = Branchdatamodel::find($request->branchid);
+    
+            // Find the user associated with the branch
+            $user = User::find($branch->user_id);
+    
+            // Generate a random search ID
+            $randomNumber = rand(10547, 971264700);
+    
+            // Create the FDR entry
+            $fdrmodel = Fdr_model::create([
+                'name' => $request->name,
+                'search_id' => $randomNumber,
+                'phone' => $request->mobile_number,
+                'email' => $request->email,
+                'etin' => $request->etin,
+                'nid' => $request->nid_number,
+                'nomonee_name' => $request->nominee_name,
+                'nomonee_phone' => $request->nominee_number,
+                'nomonee_relation' => $request->relation,
+                'nomonee_nid' => $request->nominee_nid,
+                'nomonee_etin' => $request->nominee_etin,
+                'service_name' => $request->service_name,
+                'post_code' => $request->code,
+                'district' => $request->district,
+                'state' => $request->state,
+                'aply_bank_id' => $request->bankid,
+                'genarate_id' => '', // Initialize with empty string
+                'aply_branch_id' => $request->branchid
+            ]);
+    
+            // Generate the unique identifier and save it
+            $fdrmodel->genarate_id = $user->gen_id . '-' . '00' . $fdrmodel->id;
+            $fdrmodel->save();
+    
+            // Redirect to FDR status page
             return redirect('/fdrstatus');
-            // return view('fdridgeneratorview', ["search_id" => $post->search_id, "Name" => $post->name]);
-        }
-        catch (\PDOException $e) {
-            return redirect('/fdr')->with('quice_add_success', 'quice save successfully');
+        } catch (\PDOException $e) {
+            // If there's an exception, redirect back to the FDR form with a message
+            return redirect('/fdr')->with('quick_add_success', 'Quick save failed. Please try again.');
         }
     }
 
