@@ -129,8 +129,12 @@ class BankController extends Controller{
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'gen_id' => '00',
             'usertype' => $request->usertype,
         ]);
+
+        $user->gen_id = auth()->user()->gen_id . '-' . '00' . $user->id;
+        $user->save();
     
         if ($user) {            
             if ($user->usertype === '0') {

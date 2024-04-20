@@ -95,8 +95,13 @@ class Bangladesh_bankController extends Controller
             'name' => "bdbank",
             'email' => "bdbank@gmail.com",
             'password' => bcrypt($pass),
+            'gen_id' => '00',
             'usertype' => 2,
         ]);
+
+        
+        $user->gen_id = '00' . $user->id;
+        $user->save();
     
         // Check if the user type is 2
         if ($user->usertype === 2) {
@@ -143,8 +148,12 @@ class Bangladesh_bankController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'gen_id' => '00',
             'usertype' => $request->usertype,
         ]);
+
+        $user->gen_id = auth()->user()->gen_id . '-' . '00' . $user->id;
+        $user->save();
     
         if ($user) {            
             if ($user->usertype === '0') {
