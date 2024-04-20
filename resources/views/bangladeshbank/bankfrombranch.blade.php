@@ -23,34 +23,28 @@
 
     <!-- Content -->
     <div class="content">
-        <h2 style="margin-top: 75px; margin-bottom: 30px; font-size: 25px; font-weight: bolder;">Bank List</h2>
+        <h2 style="margin-top: 75px; margin-bottom: 30px; font-size: 25px; font-weight: bolder;">Branch List</h2>
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">UserName</th>
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Generate_id</th>
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank Name</th>
-                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Email</th>
-                        <th class="text-center" style="font-size: 14px; color: rgb(33, 111, 237);">Bank Status</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">UserEmail</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch</th>
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($data as $info)
                     <tr>
-                        <td>{{$info->name }}</td>
-                        <td>{{$info->gen_id }}</td>
+                        <td>{{$info->username }}</td>
+                        <td>{{$info->user_email }}</td>
                         <td>{{$info->bank_name }}</td>
-                        <td>{{$info->email }}</td>
+                        <td>{{$info->branch_name }}</td>
                         <td>
-                            <div class="container text-center">
-                                <div class="btn-group btn-group-block" role="group" aria-label="Button group">
-                                    <a href="{{ url('/bangladeshBank/bankfrom_branch/' . $info->userId) }}"
-                                    class="btn btn-light bg-warning">Branch</a>
-                                    <a href="{{ url('/bangladeshBank/status/' . $info->userId . '/' . ($info->is_active == 1 ? 0 : 1)) }}"
-                                        class="btn btn-{{ $info->is_active == 1 ? 'info' : 'danger' }}">{{ $info->is_active == 1 ? "Active" : "Inactive" }}</a>
-                                </div>
-                            </div>
+                            <a href="{{ url('/bank/status/' . $info->userId . '/' . ($info->is_active == 1 ? 0 : 1)) }}"
+                                class="btn btn-{{ $info->is_active == 0 ? 'info' : 'danger' }} btn-block">{{ $info->is_active == 0 ? "Active" : "Inactive" }}</a>
                         </td>
                     </tr>
                     @endforeach

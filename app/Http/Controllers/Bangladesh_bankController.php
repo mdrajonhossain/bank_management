@@ -89,6 +89,19 @@ class Bangladesh_bankController extends Controller
         return view('bangladeshbank.banklist', ['data' => $data]);
     }
 
+    public function bankfrom_branch($userId){ 
+       
+        $data = DB::table('branchdatamodels')
+            ->select('branchdatamodels.*', 'bankdatamodels.*', 'users.id as userId','users.name as username', 'users.email as user_email', 'users.is_active')   
+            ->leftJoin('bankdatamodels', 'branchdatamodels.bank_id', '=', 'bankdatamodels.id')
+            ->leftJoin('users', 'branchdatamodels.user_id', '=', 'users.id')
+            ->where('bankdatamodels.user_id', $userId)
+            ->get();
+
+        
+        return view('bangladeshbank.bankfrombranch', ['data' => $data]);
+    }
+
 
 
     public function bdbank(){
