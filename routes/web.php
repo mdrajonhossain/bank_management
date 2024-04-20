@@ -96,8 +96,10 @@ Route::middleware(['auth', 'is_Bank'])->prefix('bank')->group(function () {
     Route::post('/addbranchregister', [BankController::class, 'addbranchregister']);
     
     
-    // branch account enable /disable 
+        // branch account enable /disable 
+        // bank and bangladesh bank its route same function start
     Route::get('/status/{id}/{status}', [BankController::class, 'statusdata']);    
+        // bank and bangladesh bank its route same function end
 });
 
 
@@ -114,6 +116,10 @@ Route::middleware(['auth', 'is_BangladeshBank'])->prefix('bangladeshBank')->grou
 
     Route::get('/bankregister', [Bangladesh_bankController::class, 'bankregister']);    
     Route::post('/addbankregister', [Bangladesh_bankController::class, 'addbankregister']);
+
+        // bank and bangladesh bank its route same function start
+    Route::get('/status/{id}/{status}', [BankController::class, 'statusdata']);    
+        // bank and bangladesh bank its route same function end
 });
 
 

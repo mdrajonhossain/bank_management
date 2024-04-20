@@ -43,7 +43,7 @@
                         <td>{{$info->bank_name }}</td>
                         <td>{{$info->branch_name }}</td>
                         <td>
-                            <a href="{{ url('/bank/status/' . $info->userId . '/' . ($info->is_active == 1 ? 0 : 1)) }}"
+                            <a href="{{ url('/bangladeshBank/status/' . $info->userId . '/' . ($info->is_active == 1 ? 0 : 1)) }}"
                                 class="btn btn-{{ $info->is_active == 0 ? 'info' : 'danger' }} btn-block">{{ $info->is_active == 0 ? "Active" : "Inactive" }}</a>
                         </td>
                     </tr>
