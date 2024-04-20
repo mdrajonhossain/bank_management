@@ -32,6 +32,7 @@
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Bank</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Branch</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Application type</th>                        
+                        <th style="font-size: 14px; color: rgb(33, 111, 237);">Id</th>                        
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">User Name</th>                        
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">Verify</th>
                         <th style="font-size: 14px; color: rgb(33, 111, 237);">View</th>
@@ -45,6 +46,7 @@
                         <td>{{$info->bank_name }}</td>
                         <td>{{$info->branch_name }}</td>
                         <td>{{$info->service_name }}</td>
+                        <td>{{$info->genarate_id }}</td>
                         <td>{{$info->auth_name }}</td>
                         <!-- <td>{{ $info->branch_verifyed == 0 ? "False" : "True" }}</td> -->
 

@@ -40,8 +40,6 @@ class BranchController extends Controller{
                 WHERE branchdatamodels.user_id = $auth_user_id
             ");
 
-             
-    
         return view('branch.branch', ['data' => $data]);      
     }
 

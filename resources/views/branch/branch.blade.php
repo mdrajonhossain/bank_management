@@ -33,6 +33,7 @@
                         <th>Bank</th>
                         <th>Branch Name</th>
                         <th>Application type</th>                        
+                        <th>Id</th>
                         <th>Verify</th>
                         <th>View</th>
                     </tr>
@@ -45,6 +46,7 @@
                         <td>{{$info->bank_name }}</td>
                         <td>{{$info->branch_name }}</td>
                         <td>{{$info->service_name }}</td>
+                        <td>{{$info->genarate_id }}</td>
                         <td>
                             @if($info->branch_verifyed)
                             <span class="text-info">Verified</div>

@@ -65,6 +65,8 @@ class BankController extends Controller{
             WHERE bankdatamodels.user_id = $auth_user_id
         ");
 
+        
+
 
 
 

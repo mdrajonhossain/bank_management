@@ -27,6 +27,7 @@ class Bangladesh_bankController extends Controller
         LEFT JOIN branchdatamodels ON fdr_models.aply_branch_id = branchdatamodels.id
         LEFT JOIN users ON bankdatamodels.user_id = users.id");
        
+        
 
         return view('bangladeshbank.bangladeshbank', ['data' => $data]);        
     }
