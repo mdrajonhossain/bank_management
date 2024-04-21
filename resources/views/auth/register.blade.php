@@ -116,9 +116,9 @@
                                         <select id="bank-name" class="form-control" name="bankid">
                                             <option value="" selected disabled>Select bank</option>
                                             @if($bank)
-                                                @foreach($bank as $banks)
-                                                <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
-                                                @endforeach
+                                            @foreach($bank as $banks)
+                                            <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
+                                            @endforeach
                                             @endif
                                         </select>
                                     </div>
@@ -158,6 +158,14 @@
             </div>
         </div>
     </div>
+
+
+
+    @if(Route::currentRouteName() == 'register')
+    <script>
+        window.location = "{{ route('login') }}";
+    </script>
+    @endif
 
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
