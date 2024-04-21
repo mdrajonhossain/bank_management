@@ -25,8 +25,8 @@
     <div class="content">
         <h2>Bank List</h2>
         <div class="table-responsive">
-            <br/>
-        <div class="col-md-8 mx-auto">
+            <br />
+            <div class="col-md-8 mx-auto">
                 <div class="card">
                     <!-- <div class="card-header">{{ __('User Registration') }}</div> -->
 
@@ -91,10 +91,10 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-                                                   
-                            
+
+
                             <input type="text" value="1" class="form-control" name="usertype" hidden>
-                                   
+
 
                             <!-- Bank Fields -->
                             <div class="bank" id="bankFields">
@@ -116,6 +116,24 @@
                                 </div>
                             </div>
                         </form>
+
+
+
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-5 mt-2">
+                                    @if(session('register_success'))
+                                    <div class="alert alert-danger">
+                                        {{ session('register_success') }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                     </div>
                 </div>
             </div>

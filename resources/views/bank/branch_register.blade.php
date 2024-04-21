@@ -93,13 +93,13 @@
                             </div>
 
 
-                            <input type="text" value="0" class="form-control" name="usertype" hidden>                            
+                            <input type="text" value="0" class="form-control" name="usertype" hidden>
                             <input type="text" value="{{ $bank_id->id }}" class="form-control" name="bankid" hidden>
-                            
+
                             <!-- Bank Fields -->
                             <div class="bank" id="bankFields">
                                 <div class="form-group row">
-                                <label for="branch-name" class="col-md-4 col-form-label text-md-right">Branch
+                                    <label for="branch-name" class="col-md-4 col-form-label text-md-right">Branch
                                         Name</label>
                                     <div class="col-md-6">
                                         <input type="text" id="branch-name" class="form-control" name="branch_name">
@@ -116,6 +116,20 @@
                                 </div>
                             </div>
                         </form>
+
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-5 mt-2">
+                                    @if(session('register_success'))
+                                    <div class="alert alert-danger">
+                                        {{ session('register_success') }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

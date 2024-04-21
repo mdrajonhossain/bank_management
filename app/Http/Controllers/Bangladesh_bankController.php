@@ -163,7 +163,8 @@ class Bangladesh_bankController extends Controller
         ]);
     
         if ($validator->fails()) {
-            return redirect()->back();
+            // return redirect()->back();            
+            return redirect('/bangladeshBank/bankregister')->with('register_error', 'Register faild');   
         }
     
         $user = User::create([
@@ -183,14 +184,15 @@ class Bangladesh_bankController extends Controller
                     'bank_id' => $request->bankid,
                     'branch_name' => $request->branch_name,
                     'user_id' => $user->id,
-                ]);
-                return redirect()->back();
+                ]);                
+                // return redirect()->back();                                
             } elseif ($user->usertype === '1') {
                 Bankdatamodel::create([
                     'user_id' => $user->id,
                     'bank_name' => $request->bank_name,
                 ]);
-                return redirect()->back();
+                // return redirect()->back();                
+                return redirect('/bangladeshBank/bankregister')->with('register_success', 'Register successfully');   
             }
         } else {
             // Handle user creation failure

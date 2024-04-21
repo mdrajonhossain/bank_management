@@ -124,8 +124,8 @@ class BankController extends Controller{
             'usertype' => 'required|string',
         ]);
     
-        if ($validator->fails()) {
-            return redirect('/bank/branchregister');
+        if ($validator->fails()) {            
+            return redirect('/bank/branchregister')->with('register_error', 'Register faild');   
         }
     
         $user = User::create([
@@ -145,8 +145,8 @@ class BankController extends Controller{
                     'bank_id' => $request->bankid,
                     'branch_name' => $request->branch_name,
                     'user_id' => $user->id,
-                ]);
-                return redirect('/bank/branchregister');
+                ]);                
+                return redirect('/bank/branchregister')->with('register_success', 'Register successfully');   
             }
         } else {
             // Handle user creation failure
