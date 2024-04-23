@@ -45,7 +45,7 @@
                         <td>{{$info->branch_name }}</td>                        
                         <td>{{$info->bank_name }}</td>
                         <td>
-                            <a href="{{ url('/bangladeshBank/status/' . $info->user_id . '/' . ($info->is_active == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->is_active == 0 ? 'info' : 'danger' }} btn-block">{{ $info->is_active == 0 ? "Active" : "Inactive" }}</a>
+                            <a href="{{ url('/bangladeshBank/status/' . $info->user_id . '/' . ($info->is_active == 1 ? 0 : 1)) }}" class="btn btn-{{ $info->is_active == 0 ? 'danger' : 'info' }} btn-block">{{ $info->is_active == 1 ? "Active" : "Inactive" }}</a>
                         </td>
                     </tr>
                     @endforeach
