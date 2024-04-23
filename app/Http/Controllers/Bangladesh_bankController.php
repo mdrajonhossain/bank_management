@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Fdr_model;
 use App\Models\Bankdatamodel;
+use App\Models\Branchdatamodel;
 use App\Models\VerifiedserviceId;
 
 
@@ -88,6 +89,21 @@ class Bangladesh_bankController extends Controller
         
         return view('bangladeshbank.banklist', ['data' => $data]);
     }
+
+
+    public function branchlist(){
+        // $branchlist = Branchdatamodel::all();
+
+        $data = DB::table('branchdatamodels')
+        ->select('branchdatamodels.*','bankdatamodels.bank_name as bank_name', 'users.email as email','users.name as userName','users.is_active as is_active')
+        ->leftJoin('bankdatamodels', 'bankdatamodels.id', '=', 'branchdatamodels.bank_id')
+        ->leftJoin('users', 'users.id', '=', 'branchdatamodels.user_id')->get();    
+
+        return view('bangladeshbank.branch_list', ['data'=> $data]);
+    }
+
+
+
 
     public function bankfrom_branch($userId){ 
        

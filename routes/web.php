@@ -112,6 +112,14 @@ Route::middleware(['auth', 'is_BangladeshBank'])->prefix('bangladeshBank')->grou
 
     Route::get('/views/{id}', [Bangladesh_bankController::class, 'fdrviewdata']);
     Route::get('/banklist', [Bangladesh_bankController::class, 'bnklist']);
+    
+    
+    
+// bdbank in all branch list show start
+    Route::get('/branchlist', [Bangladesh_bankController::class, 'branchlist']);
+// bdbank in all branch list show end
+
+
     Route::get('/bankfrom_branch/{userId}', [Bangladesh_bankController::class, 'bankfrom_branch']);
 
     Route::get('/bankregister', [Bangladesh_bankController::class, 'bankregister']);    
